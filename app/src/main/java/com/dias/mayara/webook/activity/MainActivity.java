@@ -1,8 +1,10 @@
-package com.dias.mayara.webook;
+package com.dias.mayara.webook.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.dias.mayara.webook.R;
 
 public class MainActivity extends AppCompatActivity {
 
