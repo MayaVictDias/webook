@@ -56,13 +56,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/textViewTextoPublicacao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imageViewImagemPublicacao"
                     android:layout_width="400dp"
                     android:layout_height="200dp"
                     android:layout_gravity="center"
@@ -74,14 +74,14 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView7"
+                        android:id="@+id/textViewNumeroCurtidas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Número de curtidas" />
 
                     <TextView
-                        android:id="@+id/textView8"
+                        android:id="@+id/textViewNumeroComentarios"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
