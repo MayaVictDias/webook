@@ -5,7 +5,7 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/darkPrimaryColor</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="fontFamily">@font/ubuntu_light</item>
+        <item name="fontFamily">@font/ubuntu</item>
     </style>
 
     <style name="Theme.Webook" parent="Base.Theme.Webook" />
