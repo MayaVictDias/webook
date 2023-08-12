@@ -30,4 +30,5 @@ public class PublicacoesAdapter extends RecyclerView.Adapter<PublicacoesAdapter.
         }
     }
 
+
 }
