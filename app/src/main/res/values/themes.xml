@@ -1,11 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Webook" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Base.Theme.Webook" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/darkPrimaryColor</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="fontFamily">@font/ubuntu</item>
+        <item name="background">@color/white</item>
     </style>
 
     <style name="Theme.Webook" parent="Base.Theme.Webook" />
