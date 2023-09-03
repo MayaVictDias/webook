@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical"
+    android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
-    android:padding="32dp">
+    android:padding="32dp"
+    tools:context=".activity.TelaInicialActivity">
 
     <ImageView
-        android:id="@+id/imageViewLogotipoWebook"
+        android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="32dp"
+        android:layout_marginBottom="16dp"
         app:srcCompat="@drawable/logotipo_webook" />
 
     <Button
-        android:id="@+id/buttonCadastrar"
+        android:id="@+id/buttonCTACadastrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@drawable/estilo_background_button"
+        android:onClick="abrirTelaCadastro"
         android:text="Cadastre-se"
         android:textColor="@color/primaryColor" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/buttonCTALogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primaryColor"
+        android:onClick="abrirTelaLogin"
         android:text="LOGIN"
         android:textColor="@color/white" />
 </LinearLayout>
