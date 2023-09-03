@@ -77,7 +77,7 @@
                     android:layout_height="200dp"
                     android:layout_gravity="center"
                     android:paddingBottom="16dp"
-                    android:src="@drawable/img_android_empty" />
+                    android:src="@drawable/imagem_android_empty" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -113,7 +113,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableLeft="@drawable/icone_gostei_ic_cinza"
+                        android:drawableLeft="@drawable/icone_gostei"
                         android:text="GOSTEI" />
 
                     <Button
@@ -122,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawableLeft="@drawable/icone_comentario_ic_cinza"
+                        android:drawableLeft="@drawable/icone_comentario"
                         android:text="COMENTAR"
                         app:icon="@android:drawable/btn_star" />
                 </LinearLayout>
