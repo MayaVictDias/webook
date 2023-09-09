@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar2;
     private Usuario usuario;
     private FirebaseAuth autenticacao;
+    private CheckBox checkBoxManterLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         inicializarComponentes();
+
 
         // Fazer login do usuário
         progressBar2.setVisibility(View.GONE);
@@ -46,8 +49,8 @@ public class LoginActivity extends AppCompatActivity {
                 String textoSenha = editTextLoginSenha.getText().toString();
 
                 // Se algum campo não tiver sido preenchido, envia uma mensagem de erro pro usuário
-                if(!textoEmail.isEmpty()) {
-                    if(!textoSenha.isEmpty()){
+                if (!textoEmail.isEmpty()) {
+                    if (!textoSenha.isEmpty()) {
 
                         usuario = new Usuario();
                         usuario.setEmailUsuario(textoEmail);
@@ -85,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
         ).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
+                if (task.isSuccessful()) {
 
                     progressBar2.setVisibility(View.GONE);
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
@@ -98,6 +101,5 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }
