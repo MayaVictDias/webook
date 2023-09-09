@@ -19,6 +19,7 @@
         android:layout_weight="1" />
 
     <include
+        android:id="@+id/bottom_navigation"
         layout="@layout/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="56dp" />
