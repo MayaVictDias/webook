@@ -2,6 +2,7 @@ package com.dias.mayara.webook.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
@@ -38,6 +39,14 @@ public class LoginActivity extends AppCompatActivity {
 
         inicializarComponentes();
 
+        Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Login");
+        toolbar.setTitleTextColor(getColor(R.color.white));
+        setSupportActionBar(toolbar);
+
+        // Configurar botão de voltar na toolbar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar_branco);
 
         // Fazer login do usuário
         progressBar2.setVisibility(View.GONE);

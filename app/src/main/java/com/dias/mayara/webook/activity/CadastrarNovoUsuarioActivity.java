@@ -2,6 +2,7 @@ package com.dias.mayara.webook.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,6 +37,15 @@ public class CadastrarNovoUsuarioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrar_novo_usuario);
 
         inicializarComponentes();
+
+        Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
+        toolbar.setTitle("Cadastro");
+        toolbar.setTitleTextColor(getColor(R.color.white));
+        setSupportActionBar(toolbar);
+
+        // Configurar botão de voltar na toolbar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar_branco);
 
         // Ao clique do botão, o usuário é cadastrado
         progressBarCadastrarNovoUsuario.setVisibility(View.GONE);
