@@ -12,10 +12,10 @@ import com.dias.mayara.webook.R;
 
 public class BibliotecaFragment extends Fragment {
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public BibliotecaFragment() {
+        // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

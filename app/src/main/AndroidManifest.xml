@@ -13,13 +13,19 @@
         android:theme="@style/Theme.Webook"
         tools:targetApi="31">
         <activity
+            android:name=".activity.EdicaoPerfilActivity"
+            android:parentActivityName=".activity.MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.CadastrarNovoUsuarioActivity"
+            android:parentActivityName=".activity.TelaInicialActivity"
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
+            android:parentActivityName=".activity.TelaInicialActivity"
             android:exported="false" />
         <activity
             android:name=".activity.TelaInicialActivity"
