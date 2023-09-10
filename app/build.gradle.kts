@@ -48,4 +48,5 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:11.0.4")
     implementation("com.google.firebase:firebase-storage")
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.firebaseui:firebase-ui-storage:7.2.0")
 }
