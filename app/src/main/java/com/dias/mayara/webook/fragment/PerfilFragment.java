@@ -1,6 +1,7 @@
 package com.dias.mayara.webook.fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,14 +13,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.EdicaoPerfilActivity;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.google.firebase.auth.FirebaseUser;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class PerfilFragment extends Fragment {
 
-    private ImageView imageViewFotoUsuario;
+    private CircleImageView imageViewFotoUsuario;
     private TextView textViewNomeUsuario;
     private TextView textViewQuantidadeEventosUsuario;
     private TextView textViewQuantidadeFavoritos;
@@ -49,6 +53,15 @@ public class PerfilFragment extends Fragment {
         // Recuperar dados do usuário
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
         textViewNomeUsuario.setText(usuarioPerfil.getDisplayName());
+
+        Uri url = usuarioPerfil.getPhotoUrl();
+        if(url != null) {
+
+            Glide.with(PerfilFragment.this).load(url).into(imageViewFotoUsuario);
+        } else {
+            imageViewFotoUsuario.setImageResource(R.drawable.icone_account_circle);
+        }
+
 
         // Abre activity de editar perfil
         buttonEditarPerfil.setOnClickListener(new View.OnClickListener() {
