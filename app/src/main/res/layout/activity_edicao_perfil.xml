@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image_view"
+            android:id="@+id/ImageViewFotoPerfilUsuario"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_gravity="center"
@@ -24,7 +24,7 @@
             android:src="@drawable/icone_account_circle" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textViewAlterarFoto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -32,17 +32,24 @@
             android:textColor="@color/colorAccent"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/editTextText"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:drawableStart="@drawable/ic_person_primary_color"
-            android:drawableTint="@color/colorAccent"
-            android:ems="10"
-            android:hint="Alterar nome de usuário"
-            android:inputType="text"
-            android:textColorHint="@color/colorAccent" />
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+
+                android:id="@+id/editTextEditarNomeUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:drawableStart="@drawable/ic_person_primary_color"
+                android:drawableTint="@color/colorAccent"
+                android:ems="10"
+                android:hint="Alterar nome de usuário"
+                android:inputType="text"
+                android:textColorHint="@color/colorAccent" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/buttonSalvarAlteracoes"

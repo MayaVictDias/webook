@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.EdicaoPerfilActivity;
+import com.dias.mayara.webook.helper.UsuarioFirebase;
+import com.google.firebase.auth.FirebaseUser;
 
 public class PerfilFragment extends Fragment {
 
@@ -43,6 +45,10 @@ public class PerfilFragment extends Fragment {
         textViewQuantidadeSeguidores = view.findViewById(R.id.textViewQuantidadeSeguidores);
         textViewQuantidadeSeguindo = view.findViewById(R.id.textViewQuantidadeSeguindo);
         buttonEditarPerfil = view.findViewById(R.id.buttonEditarPerfil);
+
+        // Recuperar dados do usuário
+        FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
+        textViewNomeUsuario.setText(usuarioPerfil.getDisplayName());
 
         // Abre activity de editar perfil
         buttonEditarPerfil.setOnClickListener(new View.OnClickListener() {

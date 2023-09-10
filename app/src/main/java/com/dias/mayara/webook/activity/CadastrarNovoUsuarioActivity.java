@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
+import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -136,6 +137,9 @@ public class CadastrarNovoUsuarioActivity extends AppCompatActivity {
                                 String idUsuario = task.getResult().getUser().getUid(); // Recupera ID do usuario criado pelo firebase
                                 usuario.setId(idUsuario);
                                 usuario.salvar();
+
+                                // Salvar nome do usuário
+                                UsuarioFirebase.atualizarNomeUsuario(usuario.getNomeUsuario());
 
                                 Toast.makeText(CadastrarNovoUsuarioActivity.this,
                                         "Cadastro realizado com sucesso!",
