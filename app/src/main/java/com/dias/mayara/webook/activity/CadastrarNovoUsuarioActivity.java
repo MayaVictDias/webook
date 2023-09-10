@@ -128,14 +128,26 @@ public class CadastrarNovoUsuarioActivity extends AppCompatActivity {
                         String erroExcecao = null;
                         if (task.isSuccessful()) { // Login bem-sucedido
 
-                            progressBarCadastrarNovoUsuario.setVisibility(View.GONE);
+                            try {
 
-                            Toast.makeText(CadastrarNovoUsuarioActivity.this,
-                                    "Cadastro realizado com sucesso!",
-                                    Toast.LENGTH_SHORT).show();
+                                progressBarCadastrarNovoUsuario.setVisibility(View.GONE);
 
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish(); // Método para encerrar a activity atual de cadastrar usuário
+                                // Salvar dados do usuário no firebase
+                                String idUsuario = task.getResult().getUser().getUid(); // Recupera ID do usuario criado pelo firebase
+                                usuario.setId(idUsuario);
+                                usuario.salvar();
+
+                                Toast.makeText(CadastrarNovoUsuarioActivity.this,
+                                        "Cadastro realizado com sucesso!",
+                                        Toast.LENGTH_SHORT).show();
+
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                finish(); // Método para encerrar a activity atual de cadastrar usuário
+
+                            } catch (Exception e) {
+
+                                e.printStackTrace();
+                            }
 
                         } else { // Login com erro
 
