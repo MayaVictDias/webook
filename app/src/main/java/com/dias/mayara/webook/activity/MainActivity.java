@@ -16,6 +16,7 @@ import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.fragment.BibliotecaFragment;
 import com.dias.mayara.webook.fragment.EventosFragment;
 import com.dias.mayara.webook.fragment.PerfilFragment;
+import com.dias.mayara.webook.fragment.PesquisarFragment;
 import com.dias.mayara.webook.fragment.PublicacoesFragment;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -99,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
 
                 if(item.getItemId() == R.id.ic_home) {
                     fragmentTransaction.replace(R.id.viewPager, new PublicacoesFragment()).commit();
+                    return true;
+                } else if(item.getItemId() == R.id.ic_pesquisar) {
+                    fragmentTransaction.replace(R.id.viewPager, new PesquisarFragment()).commit();
                     return true;
                 } else if(item.getItemId() == R.id.ic_eventos) {
                     fragmentTransaction.replace(R.id.viewPager, new EventosFragment()).commit();

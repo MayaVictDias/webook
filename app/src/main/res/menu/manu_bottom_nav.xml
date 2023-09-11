@@ -5,6 +5,10 @@
         android:icon="@drawable/ic_home_branco"
         android:title="Home" />
 
+    <item android:id="@+id/ic_pesquisar"
+        android:icon="@drawable/ic_search_branco"
+        android:title="Pesquisar" />
+
     <item android:id="@+id/ic_eventos"
         android:icon="@drawable/ic_group_branco"
         android:title="Eventos" />
