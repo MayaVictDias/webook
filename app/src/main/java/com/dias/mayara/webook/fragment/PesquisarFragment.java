@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import com.dias.mayara.webook.R;
+import com.dias.mayara.webook.adapter.PesquisaAdapter;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +34,7 @@ public class PesquisarFragment extends Fragment {
     // TODO criar livrosRef
     // TODO criar eventosRef
     // Todo criar autoresRef
+    private PesquisaAdapter pesquisaAdapter;
 
     public PesquisarFragment() {
         // Required empty public constructor
@@ -45,8 +48,16 @@ public class PesquisarFragment extends Fragment {
         searchViewPesquisa = view.findViewById(R.id.searchViewPesquisa);
         recyclerViewPesquisa = view.findViewById(R.id.recyclerViewPesquisa);
 
+        // Configuração do RecyclerView
+        recyclerViewPesquisa.setHasFixedSize(true);
+        recyclerViewPesquisa.setLayoutManager(new LinearLayoutManager(getActivity()));
+
         listaUsuarios = new ArrayList<>();
         usuariosRef = ConfiguracaoFirebase.getFirebase().child("usuarios");
+
+        // Configuração do adapter de pesquisa
+        pesquisaAdapter = new PesquisaAdapter(listaUsuarios, getContext());
+        recyclerViewPesquisa.setAdapter(pesquisaAdapter);
 
         // Configuração da searchView
         searchViewPesquisa.setQueryHint("Buscar");
@@ -84,11 +95,18 @@ public class PesquisarFragment extends Fragment {
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                    // Limpa a lista
+                    listaUsuarios.clear();
+
                     for (DataSnapshot ds : snapshot.getChildren()){
 
                         listaUsuarios.add(ds.getValue(Usuario.class));
 
                     }
+
+                    // Avisar o adapter que houve uma atualização nos itens retornados
+                    pesquisaAdapter.notifyDataSetChanged();
 
                     int total = listaUsuarios.size();
 
@@ -100,6 +118,5 @@ public class PesquisarFragment extends Fragment {
                 }
             });
         }
-
     }
 }
