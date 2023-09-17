@@ -59,6 +59,7 @@ public class EdicaoPerfilActivity extends AppCompatActivity {
         storageRef = ConfiguracaoFirebase.getFirebaseStorage();
         identificadorUsuario = UsuarioFirebase.getIdentificadorUsuario();
 
+        // Configuração da toolbar
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
         toolbar.setTitle("Editar perfil");
         toolbar.setTitleTextColor(getColor(R.color.white));

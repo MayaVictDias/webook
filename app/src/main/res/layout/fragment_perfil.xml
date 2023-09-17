@@ -35,7 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewNomeUsuario" />
 
     <TextView
-        android:id="@+id/textViewQuantidadeFavoritos"
+        android:id="@+id/textViewQuantidadeFavoritosUsuario"
         android:layout_width="103dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewNomeUsuario" />
 
     <TextView
-        android:id="@+id/textViewQuantidadeSeguindo"
+        android:id="@+id/textViewQuantidadeSeguindoUsuario"
         android:layout_width="103dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewNomeUsuario" />
 
     <TextView
-        android:id="@+id/textViewQuantidadeSeguidores"
+        android:id="@+id/textViewQuantidadeSeguidoresUsuario"
         android:layout_width="103dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -89,7 +89,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeSeguindo" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeSeguindoUsuario" />
 
     <TextView
         android:id="@+id/textView"
@@ -113,7 +113,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeSeguidores" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeSeguidoresUsuario" />
 
     <TextView
         android:id="@+id/textView2"
@@ -125,10 +125,10 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeFavoritos" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeFavoritosUsuario" />
 
     <Button
-        android:id="@+id/buttonEditarPerfil"
+        android:id="@+id/buttonAcao"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginStart="32dp"

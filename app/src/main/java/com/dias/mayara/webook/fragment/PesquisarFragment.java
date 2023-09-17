@@ -1,5 +1,6 @@
 package com.dias.mayara.webook.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.SearchView;
 
 import com.dias.mayara.webook.R;
+import com.dias.mayara.webook.activity.PerfilAmigoActivity;
 import com.dias.mayara.webook.adapter.PesquisaAdapter;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
+import com.dias.mayara.webook.helper.RecyclerItemClickListener;
 import com.dias.mayara.webook.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -58,6 +62,34 @@ public class PesquisarFragment extends Fragment {
         // Configuração do adapter de pesquisa
         pesquisaAdapter = new PesquisaAdapter(listaUsuarios, getContext());
         recyclerViewPesquisa.setAdapter(pesquisaAdapter);
+
+        // COnfiguração do evento de clique
+        recyclerViewPesquisa.addOnItemTouchListener(new RecyclerItemClickListener(
+                getActivity(),
+                recyclerViewPesquisa,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                        Usuario usuarioSelecionado = listaUsuarios.get(position);
+                        Intent i = new Intent(getActivity(), PerfilAmigoActivity.class);
+
+                        i.putExtra("usuarioSelecionado", usuarioSelecionado);
+                        startActivity(i);
+
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    }
+                }
+        ));
 
         // Configuração da searchView
         searchViewPesquisa.setQueryHint("Buscar");
