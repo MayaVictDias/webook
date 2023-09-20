@@ -15,6 +15,42 @@ public class Usuario implements Serializable {
     private String emailUsuario;
     private String senhaUsuario;
     private String caminhoFoto;
+    private int numeroPostagens = 0;
+    private int numeroFavoritos = 0;
+    private int numeroSeguidores = 0;
+    private int numeroSeguindo = 0;
+
+    public int getNumeroPostagens() {
+        return numeroPostagens;
+    }
+
+    public void setNumeroPostagens(int numeroPostagens) {
+        this.numeroPostagens = numeroPostagens;
+    }
+
+    public int getNumeroFavoritos() {
+        return numeroFavoritos;
+    }
+
+    public void setNumeroFavoritos(int numeroFavoritos) {
+        this.numeroFavoritos = numeroFavoritos;
+    }
+
+    public int getNumeroSeguidores() {
+        return numeroSeguidores;
+    }
+
+    public void setNumeroSeguidores(int numeroSeguidores) {
+        this.numeroSeguidores = numeroSeguidores;
+    }
+
+    public int getNumeroSeguindo() {
+        return numeroSeguindo;
+    }
+
+    public void setNumeroSeguindo(int numeroSeguindo) {
+        this.numeroSeguindo = numeroSeguindo;
+    }
 
     public String getCaminhoFoto() {
         return caminhoFoto;
@@ -56,6 +92,11 @@ public class Usuario implements Serializable {
         usuarioMap.put("nome", getNomeUsuario());
         usuarioMap.put("id", getId());
         usuarioMap.put("caminhoFoto", getCaminhoFoto());
+
+        usuarioMap.put("numeroPostagens", getNumeroPostagens());
+        usuarioMap.put("numeroFavoritos", getNumeroFavoritos());
+        usuarioMap.put("numeroSeguidores", getNumeroSeguidores());
+        usuarioMap.put("numeroSeguindo", getNumeroSeguindo());
 
         return usuarioMap;
     }

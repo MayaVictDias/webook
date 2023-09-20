@@ -43,7 +43,7 @@ public class PerfilFragment extends Fragment {
         // Configuração dos componentes
         imageViewFotoUsuario = view.findViewById(R.id.imageViewFotoUsuario);
         textViewNomeUsuario = view.findViewById(R.id.textViewNomeUsuario);
-        textViewQuantidadeEventosUsuario = view.findViewById(R.id.textViewQuantidadeEventosUsuario);
+        textViewQuantidadeEventosUsuario = view.findViewById(R.id.textViewQuantidadePostagensUsuario);
         textViewQuantidadeFavoritos = view.findViewById(R.id.textViewQuantidadeFavoritosUsuario);
         textViewQuantidadeSeguidores = view.findViewById(R.id.textViewQuantidadeSeguidoresUsuario);
         textViewQuantidadeSeguindo = view.findViewById(R.id.textViewQuantidadeSeguindoUsuario);
@@ -53,6 +53,7 @@ public class PerfilFragment extends Fragment {
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
         textViewNomeUsuario.setText(usuarioPerfil.getDisplayName());
 
+        // Exibir foto do usuario, caso ele tenha setado uma
         Uri url = usuarioPerfil.getPhotoUrl();
         if(url != null) {
 
@@ -60,7 +61,6 @@ public class PerfilFragment extends Fragment {
         } else {
             imageViewFotoUsuario.setImageResource(R.drawable.icone_account_circle);
         }
-
 
         // Abre activity de editar perfil
         buttonAcaoPerfil.setOnClickListener(new View.OnClickListener() {
