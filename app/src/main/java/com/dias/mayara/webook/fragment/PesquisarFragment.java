@@ -19,6 +19,7 @@ import com.dias.mayara.webook.activity.PerfilAmigoActivity;
 import com.dias.mayara.webook.adapter.PesquisaAdapter;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.RecyclerItemClickListener;
+import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +40,7 @@ public class PesquisarFragment extends Fragment {
     // TODO criar eventosRef
     // Todo criar autoresRef
     private PesquisaAdapter pesquisaAdapter;
+    private String idUsuarioLogado;
 
     public PesquisarFragment() {
         // Required empty public constructor
@@ -51,6 +53,8 @@ public class PesquisarFragment extends Fragment {
 
         searchViewPesquisa = view.findViewById(R.id.searchViewPesquisa);
         recyclerViewPesquisa = view.findViewById(R.id.recyclerViewPesquisa);
+
+        idUsuarioLogado = UsuarioFirebase.getIdentificadorUsuario();
 
         // Configuração do RecyclerView
         recyclerViewPesquisa.setHasFixedSize(true);
@@ -133,7 +137,13 @@ public class PesquisarFragment extends Fragment {
 
                     for (DataSnapshot ds : snapshot.getChildren()){
 
-                        listaUsuarios.add(ds.getValue(Usuario.class));
+                        // Verifica se é o usuário logado e remove da lista
+                        Usuario usuario = ds.getValue(Usuario.class);
+                        if(idUsuarioLogado.equals(usuario.getId())) {
+                            continue;
+                        }
+
+                        listaUsuarios.add(usuario);
 
                     }
 
