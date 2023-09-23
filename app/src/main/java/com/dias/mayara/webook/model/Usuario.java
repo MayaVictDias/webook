@@ -20,6 +20,9 @@ public class Usuario implements Serializable {
     private int numeroSeguidores = 0;
     private int numeroSeguindo = 0;
 
+    public Usuario() {
+    }
+
     public int getNumeroPostagens() {
         return numeroPostagens;
     }
@@ -58,9 +61,6 @@ public class Usuario implements Serializable {
 
     public void setCaminhoFoto(String caminhoFoto) {
         this.caminhoFoto = caminhoFoto;
-    }
-
-    public Usuario() {
     }
 
     // Referencia ao banco de dados Usuario dentro do firebase
