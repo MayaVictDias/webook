@@ -64,7 +64,6 @@ public class PerfilFragment extends Fragment {
 
         // Recuperar dados do usuário
         usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
-        textViewNomeUsuario.setText(usuarioPerfil.getDisplayName());
 
         // Abre activity de editar perfil
         buttonAcaoPerfil.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +105,8 @@ public class PerfilFragment extends Fragment {
                 } else {
                     imageViewFotoUsuario.setImageResource(R.drawable.icone_account_circle);
                 }
+
+                textViewNomeUsuario.setText(usuario.getNomeUsuario());
 
                 String numeroPostagens = String.valueOf( usuario.getNumeroPostagens() );
                 String numeroFavoritos = String.valueOf(usuario.getNumeroFavoritos());

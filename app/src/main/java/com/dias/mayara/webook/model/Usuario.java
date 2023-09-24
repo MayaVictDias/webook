@@ -48,8 +48,8 @@ public class Usuario implements Serializable {
     public Map<String, Object> converterParaMap() {
 
         HashMap<String, Object> usuarioMap = new HashMap<>();
-        usuarioMap.put("email", getEmailUsuario());
-        usuarioMap.put("nome", getNomeUsuario());
+        usuarioMap.put("emailUsuario", getEmailUsuario());
+        usuarioMap.put("nomeUsuario", getNomeUsuario());
         usuarioMap.put("id", getId());
         usuarioMap.put("caminhoFoto", getCaminhoFoto());
 

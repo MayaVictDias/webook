@@ -106,6 +106,8 @@ public class EdicaoPerfilActivity extends AppCompatActivity {
 
                 Toast.makeText(EdicaoPerfilActivity.this, "Dados atualizados com sucesso!", Toast.LENGTH_SHORT).show();
 
+                finish();
+
             }
         });
 
