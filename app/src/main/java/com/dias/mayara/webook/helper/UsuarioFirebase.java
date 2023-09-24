@@ -60,16 +60,14 @@ public class UsuarioFirebase {
         FirebaseUser firebaseUser = getUsuarioAtual();
 
         Usuario usuario = new Usuario();
-        usuario.setEmailUsuario(firebaseUser.getEmail());
-        usuario.setNomeUsuario(firebaseUser.getDisplayName());
-        usuario.setId(firebaseUser.getUid());
+        usuario.setEmailUsuario( firebaseUser.getEmail() );
+        usuario.setNomeUsuario( firebaseUser.getDisplayName() );
+        usuario.setId( firebaseUser.getUid() );
 
-        if(firebaseUser.getPhotoUrl() == null) { // Verifica se o usuário escolheu uma foto
-
+        if ( firebaseUser.getPhotoUrl() == null ){
             usuario.setCaminhoFoto("");
         } else {
-
-            usuario.setCaminhoFoto(firebaseUser.getPhotoUrl().toString());
+            usuario.setCaminhoFoto( firebaseUser.getPhotoUrl().toString() );
         }
 
         return usuario;
@@ -96,7 +94,7 @@ public class UsuarioFirebase {
                 }
             });
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

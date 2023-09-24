@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-public class PerfilAmigoActivity extends AppCompatActivity {
+public class        PerfilAmigoActivity extends AppCompatActivity {
 
     private Usuario usuarioSelecionado;
     private Usuario usuarioLogado;
@@ -81,20 +81,18 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         // Recuperar usuário selecionado
         Bundle bundle = getIntent().getExtras();
 
-        if(bundle != null) {
-
+        if( bundle != null ){
             usuarioSelecionado = (Usuario) bundle.getSerializable("usuarioSelecionado");
 
-            // Configura nome de usuario
-            textViewNomeUsuario.setText(usuarioSelecionado.getNomeUsuario());
-
-            // Exibir foto do usuario, caso ele tenha setado uma
-            Uri url = Uri.parse(usuarioSelecionado.getCaminhoFoto());
-            if(url != null) {
-                Glide.with(PerfilAmigoActivity.this).load(url).into(imageViewFotoUsuario);
-            } else {
-                imageViewFotoUsuario.setImageResource(R.drawable.icone_account_circle);
+            // Recuperar foto do usuário
+            String caminhoFoto = usuarioSelecionado.getCaminhoFoto();
+            if( caminhoFoto != null ){
+                Uri url = Uri.parse( caminhoFoto );
+                Glide.with(PerfilAmigoActivity.this)
+                        .load( url )
+                        .into( imageViewFotoUsuario );
             }
+
         }
     }
 

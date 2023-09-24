@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,7 +109,7 @@ public class PesquisarFragment extends Fragment {
 
                 pesquisarUsuarios(textoDigitado);
 
-                return false;
+                return true;
             }
         });
 
@@ -122,11 +123,11 @@ public class PesquisarFragment extends Fragment {
 
         // Confere se tem algum texto pra ser pesquisado
         if(textoDigitado.length() > 0) {
-            Query query = usuariosRef.orderByChild("nome")
+            Query query = usuariosRef.orderByChild("nomeUsuario")
                     .startAt(textoDigitado).endAt(textoDigitado + "\uf8ff");
             // OrderByChild: Ordenar por nome que começa com textoDigitado ou termina com ele
 
-            // TODO adicionar nó no firebase para salvar os nomes com uppercase, pra fazer o filtro com ele
+            // @TODO adicionar nó no firebase para salvar os nomes com uppercase, pra fazer o filtro com ele
 
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -147,11 +148,11 @@ public class PesquisarFragment extends Fragment {
 
                     }
 
+                    int totalUsuariosRetornados = listaUsuarios.size();
+                    Log.i("totalUsuariosRetornadosFirebase", "totalUsuariosRetornados: "+ totalUsuariosRetornados);
+
                     // Avisar o adapter que houve uma atualização nos itens retornados
                     pesquisaAdapter.notifyDataSetChanged();
-
-                    int total = listaUsuarios.size();
-
                 }
 
                 @Override
