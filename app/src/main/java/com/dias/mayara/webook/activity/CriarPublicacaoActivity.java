@@ -20,10 +20,15 @@ import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Publicacao;
+import com.dias.mayara.webook.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -37,7 +42,10 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
     private ImageView imageViewImagemSelecionada;
     private static final int SELECAO_GALERIA = 200;
     private String idUsuarioLogado;
-    Bitmap imagemPublicacao = null;
+    private Bitmap imagemPublicacao = null;
+    private DatabaseReference usuariosRef;
+    private DatabaseReference usuarioLogadoRef;
+    private Usuario usuarioLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,7 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
 
         // Configurações iniciais
         idUsuarioLogado = UsuarioFirebase.getIdentificadorUsuario();
+        usuariosRef = ConfiguracaoFirebase.getFirebase().child("usuarios");
 
         // Configuração da toolbar
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
@@ -58,6 +67,8 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar_branco);
 
         inicializarComponentes();
+
+        recuperarDadosUsuarioLogado();
 
         buttonAdicionarImagem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,7 +132,16 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
                                         "Sucesso ao salvar a postagem!",
                                         Toast.LENGTH_SHORT).show();
 
+                                // Atualizar quantidade de postagens
+                                int quantidadePostagens = usuarioLogado.getNumeroPostagens() + 1;
+                                usuarioLogado.setNumeroPostagens( quantidadePostagens );
+                                usuarioLogado.atualizarQuantidadePostagens();
+
                                 finish();
+                            } else {
+                                Toast.makeText(CriarPublicacaoActivity.this,
+                                        "Erro!",
+                                        Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -136,12 +156,36 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
                     "Sucesso ao salvar a postagem!",
                     Toast.LENGTH_SHORT).show();
 
+            // Atualizar quantidade de postagens
+            int quantidadePostagens = usuarioLogado.getNumeroPostagens() + 1;
+            usuarioLogado.setNumeroPostagens( quantidadePostagens );
+            usuarioLogado.atualizarQuantidadePostagens();
+
             finish();
         } else {
             Toast.makeText(CriarPublicacaoActivity.this,
                     "Erro!",
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void recuperarDadosUsuarioLogado(){
+
+        usuarioLogadoRef = usuariosRef.child( idUsuarioLogado );
+        usuarioLogadoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                //Recupera dados de usuário logado
+                usuarioLogado = snapshot.getValue( Usuario.class );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
     @Override

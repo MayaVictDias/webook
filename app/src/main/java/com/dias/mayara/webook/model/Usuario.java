@@ -23,6 +23,57 @@ public class Usuario implements Serializable {
     public Usuario() {
     }
 
+    // Referencia ao banco de dados Usuario dentro do firebase
+    public void salvar() {
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference usuariosRef = firebaseRef.child("usuarios").child(getId());
+        usuariosRef.setValue( this );
+    }
+
+    // Metodo que atualiza os valores no firebase
+    public void atualizar() {
+
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference usuariosRef = firebaseRef.child("usuarios").child(getId());
+
+        Map<String, Object> valoresUsuario = converterParaMap();
+        usuariosRef.updateChildren(valoresUsuario);
+
+    }
+
+    /*
+     * Recupera os valores do firebase que estão nos formatos que são do tipo chave String e valor
+     * Object
+     */
+    public Map<String, Object> converterParaMap() {
+
+        HashMap<String, Object> usuarioMap = new HashMap<>();
+        usuarioMap.put("email", getEmailUsuario());
+        usuarioMap.put("nome", getNomeUsuario());
+        usuarioMap.put("id", getId());
+        usuarioMap.put("caminhoFoto", getCaminhoFoto());
+
+        usuarioMap.put("numeroPostagens", getNumeroPostagens());
+        usuarioMap.put("numeroFavoritos", getNumeroFavoritos());
+        usuarioMap.put("numeroSeguidores", getNumeroSeguidores());
+        usuarioMap.put("numeroSeguindo", getNumeroSeguindo());
+
+        return usuarioMap;
+    }
+
+    public void atualizarQuantidadePostagens() {
+
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference usuariosRef = firebaseRef
+                .child("usuarios")
+                .child( getId() );
+
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("numeroPostagens", getNumeroPostagens() );
+
+        usuariosRef.updateChildren( dados );
+    }
+
     public int getNumeroPostagens() {
         return numeroPostagens;
     }
@@ -61,44 +112,6 @@ public class Usuario implements Serializable {
 
     public void setCaminhoFoto(String caminhoFoto) {
         this.caminhoFoto = caminhoFoto;
-    }
-
-    // Referencia ao banco de dados Usuario dentro do firebase
-    public void salvar() {
-        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference usuariosRef = firebaseRef.child("usuarios").child(getId());
-        usuariosRef.setValue( this );
-    }
-
-    // Metodo que atualiza os valores no firebase
-    public void atualizar() {
-
-        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference usuariosRef = firebaseRef.child("usuarios").child(getId());
-
-        Map<String, Object> valoresUsuario = converterParaMap();
-        usuariosRef.updateChildren(valoresUsuario);
-
-    }
-
-    /*
-     * Recupera os valores do firebase que estão nos formatos que são do tipo chave String e valor
-     * Object
-     */
-    public Map<String, Object> converterParaMap() {
-
-        HashMap<String, Object> usuarioMap = new HashMap<>();
-        usuarioMap.put("email", getEmailUsuario());
-        usuarioMap.put("nome", getNomeUsuario());
-        usuarioMap.put("id", getId());
-        usuarioMap.put("caminhoFoto", getCaminhoFoto());
-
-        usuarioMap.put("numeroPostagens", getNumeroPostagens());
-        usuarioMap.put("numeroFavoritos", getNumeroFavoritos());
-        usuarioMap.put("numeroSeguidores", getNumeroSeguidores());
-        usuarioMap.put("numeroSeguindo", getNumeroSeguindo());
-
-        return usuarioMap;
     }
 
     public String getId() {
