@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -121,80 +122,91 @@ public class PerfilAmigoActivity extends AppCompatActivity {
     // Metodo responsavel por verificar se um usuário já segue outro qualquer
     private void verificaSeSegueUsuarioAmigo() {
 
-        DatabaseReference seguidorRef = seguidoresRef.child(idUsuarioLogado);
+        DatabaseReference seguidorRef = seguidoresRef
+                .child( idUsuarioLogado )
+                .child( usuarioSelecionado.getId() );
 
-        seguidorRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) { // Verifica se tem dados sendo retornados
-                    // Se entrar nessa condição, usuario está sendo seguido
+        seguidorRef.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if( dataSnapshot.exists() ){
+                            // Já está seguindo
+                            Log.i("dadosUsuario", ": Seguindo" );
+                            habilitarBotaoSeguirUsuario( true );
+                        }else {
+                            // Ainda não está seguindo
+                            Log.i("dadosUsuario", ": Seguir" );
+                            habilitarBotaoSeguirUsuario( false );
+                        }
+                    }
 
-                    habilitarBotaoSeguirUsuario(true);
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-                } else {
-                    // Se entrar nessa condição, usuario não está sendo seguido
-
-                    habilitarBotaoSeguirUsuario(false);
+                    }
                 }
-             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        );
 
     }
 
     // Seguir usuário
     private void habilitarBotaoSeguirUsuario(boolean seSegueUsuario) {
 
-        if(seSegueUsuario) {
+        if ( seSegueUsuario ){
             buttonAcaoPerfil.setText("Seguindo");
         } else {
+
             buttonAcaoPerfil.setText("Seguir");
 
+            // Adiciona evento para seguir usuário
             buttonAcaoPerfil.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    // Salvar seguidor no firebase
+                public void onClick(View v) {
 
+                    // Salvar seguidor
                     salvarSeguidor(usuarioLogado, usuarioSelecionado);
                 }
             });
+
         }
+
 
     }
 
     private void salvarSeguidor(Usuario usuarioLogado, Usuario usuarioAmigo) {
 
         HashMap<String, Object> dadosAmigo = new HashMap<>();
-        dadosAmigo.put("idAmigo", usuarioAmigo.getId());
+        dadosAmigo.put("nomeUsuario", usuarioAmigo.getNomeUsuario() );
+        dadosAmigo.put("caminhoFoto", usuarioAmigo.getCaminhoFoto() );
+        DatabaseReference seguidorRef = seguidoresRef
+                .child( usuarioLogado.getId() )
+                .child( usuarioAmigo.getId() );
+        seguidorRef.setValue( dadosAmigo );
 
-        DatabaseReference seguidorRef = seguidoresRef.child(usuarioLogado.getId());
-
-        seguidorRef.setValue(dadosAmigo);
-
+        // Alterar botao acao para seguindo
         buttonAcaoPerfil.setText("Seguindo");
         buttonAcaoPerfil.setOnClickListener(null);
 
-        // Incrementar usuario no firebase
+        // Incrementar seguindo do usuário logado
         int numeroSeguindo = usuarioLogado.getNumeroSeguindo() + 1;
 
         HashMap<String, Object> dadosSeguindo = new HashMap<>();
-        dadosSeguindo.put("numeroSeguindo", numeroSeguindo);
+        dadosSeguindo.put("numeroSeguindo", numeroSeguindo );
 
-        DatabaseReference usuarioSeguindo = usuariosRef.child(usuarioLogado.getId());
-        usuarioSeguindo.updateChildren(dadosSeguindo);
+        DatabaseReference usuarioSeguindo = usuariosRef
+                .child( usuarioLogado.getId() );
+        usuarioSeguindo.updateChildren( dadosSeguindo );
 
         // Incrementar seguidores do amigo
         int numeroSeguidores = usuarioAmigo.getNumeroSeguidores() + 1;
 
         HashMap<String, Object> dadosSeguidores = new HashMap<>();
-        dadosSeguidores.put("numeroSeguidores", numeroSeguidores);
+        dadosSeguidores.put("numeroSeguidores", numeroSeguidores );
 
-        DatabaseReference usuarioSeguidores = usuariosRef.child(usuarioAmigo.getId());
-        usuarioSeguidores .updateChildren(dadosSeguidores);
+        DatabaseReference usuarioSeguidores = usuariosRef
+                .child( usuarioAmigo.getId() );
+        usuarioSeguidores.updateChildren( dadosSeguidores );
 
     }
 
