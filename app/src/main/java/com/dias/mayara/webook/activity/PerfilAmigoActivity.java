@@ -237,12 +237,14 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
 
                         Usuario usuario = snapshot.getValue(Usuario.class);
 
+                        String nomeUsuario = usuario.getNomeUsuario();
                         String numeroPostagens = String.valueOf(usuario.getNumeroPostagens());
                         String numeroFavoritos = String.valueOf(usuario.getNumeroFavoritos());
                         String numeroSeguidores = String.valueOf(usuario.getNumeroSeguidores());
                         String numeroSeguindo = String.valueOf(usuario.getNumeroSeguindo());
 
                         // Configura valores recuperados
+                        textViewNomeUsuario.setText(nomeUsuario);
                         textViewQuantidadePostagensUsuario.setText(numeroPostagens);
                         textViewQuantidadeFavoritosUsuario.setText(numeroFavoritos);
                         textViewQuantidadeSeguidoresUsuario.setText(numeroSeguidores);

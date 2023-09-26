@@ -65,6 +65,14 @@ public class PerfilFragment extends Fragment {
         // Recuperar dados do usuário
         usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
 
+        // Exibir foto do usuario, caso ele tenha setado uma
+        Uri url = usuarioPerfil.getPhotoUrl();
+        if(url != null) {
+            Glide.with(PerfilFragment.this).load(url).into(imageViewFotoUsuario);
+        } else {
+            imageViewFotoUsuario.setImageResource(R.drawable.icone_account_circle);
+        }
+
         // Abre activity de editar perfil
         buttonAcaoPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,14 +105,6 @@ public class PerfilFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 Usuario usuario = snapshot.getValue( Usuario.class );
-
-                // Exibir foto do usuario, caso ele tenha setado uma
-                Uri url = usuarioPerfil.getPhotoUrl();
-                if(url != null) {
-                    Glide.with(PerfilFragment.this).load(url).into(imageViewFotoUsuario);
-                } else {
-                    imageViewFotoUsuario.setImageResource(R.drawable.icone_account_circle);
-                }
 
                 textViewNomeUsuario.setText(usuario.getNomeUsuario());
 
