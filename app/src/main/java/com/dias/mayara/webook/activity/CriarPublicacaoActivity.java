@@ -127,27 +127,10 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
                             Uri url = task.getResult();
                             publicacao.setCaminhoFoto(url.toString());
 
-                            if(publicacao.salvar()) {
-                                Toast.makeText(CriarPublicacaoActivity.this,
-                                        "Sucesso ao salvar a postagem!",
-                                        Toast.LENGTH_SHORT).show();
-
-                                // Atualizar quantidade de postagens
-                                int quantidadePostagens = usuarioLogado.getNumeroPostagens() + 1;
-                                usuarioLogado.setNumeroPostagens( quantidadePostagens );
-                                usuarioLogado.atualizarQuantidadePostagens();
-
-                                finish();
-                            } else {
-                                Toast.makeText(CriarPublicacaoActivity.this,
-                                        "Erro!",
-                                        Toast.LENGTH_SHORT).show();
-                            }
                         }
                     });
                 }
             });
-
         }
 
         if(publicacao.salvar()) {
