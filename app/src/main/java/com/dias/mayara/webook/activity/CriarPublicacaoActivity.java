@@ -45,9 +45,11 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
     private String idUsuarioLogado;
     private Bitmap imagemPublicacao = null;
     private DatabaseReference usuariosRef;
+    private DatabaseReference firebaseRef;
     private DatabaseReference usuarioLogadoRef;
     private Usuario usuarioLogado;
     private AlertDialog dialog;
+    private DataSnapshot seguidoresSnapshot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,7 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
         // Configurações iniciais
         idUsuarioLogado = UsuarioFirebase.getIdentificadorUsuario();
         usuariosRef = ConfiguracaoFirebase.getFirebase().child("usuarios");
+        firebaseRef = ConfiguracaoFirebase.getFirebase();
 
         // Configuração da toolbar
         Toolbar toolbar = findViewById(R.id.toolbarPrincipal);
@@ -70,7 +73,7 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
 
         inicializarComponentes();
 
-        recuperarDadosUsuarioLogado();
+        recuperarDadosPostagem();
 
         buttonAdicionarImagem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,16 +140,16 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
             });
         }
 
-        if(publicacao.salvar()) {
+        // Atualizar quantidade de postagens
+        int quantidadePostagens = usuarioLogado.getNumeroPostagens() + 1;
+        usuarioLogado.setNumeroPostagens( quantidadePostagens );
+        usuarioLogado.atualizarQuantidadePostagens();
+
+        if(publicacao.salvar(seguidoresSnapshot)) {
 
             Toast.makeText(CriarPublicacaoActivity.this,
                     "Sucesso ao salvar a postagem!",
                     Toast.LENGTH_SHORT).show();
-
-            // Atualizar quantidade de postagens
-            int quantidadePostagens = usuarioLogado.getNumeroPostagens() + 1;
-            usuarioLogado.setNumeroPostagens( quantidadePostagens );
-            usuarioLogado.atualizarQuantidadePostagens();
 
             dialog.cancel();
             finish();
@@ -170,7 +173,7 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
 
     }
 
-    private void recuperarDadosUsuarioLogado(){
+    private void recuperarDadosPostagem(){
 
         abrirDialogCarregamento("Carregando dados. Aguarde!");
         usuarioLogadoRef = usuariosRef.child( idUsuarioLogado );
@@ -178,8 +181,28 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                //Recupera dados de usuário logado
+                // Recupera dados de usuário logado
                 usuarioLogado = snapshot.getValue( Usuario.class );
+
+                // Recuperar os seguidores do usuário
+                DatabaseReference seguidoresRef = firebaseRef.child("seguidores")
+                        .child(idUsuarioLogado);
+
+                seguidoresRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        seguidoresSnapshot = snapshot;
+
+                        dialog.cancel();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
 
             @Override
@@ -187,9 +210,6 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
 
             }
         });
-
-        dialog.cancel();
-
     }
 
     @Override

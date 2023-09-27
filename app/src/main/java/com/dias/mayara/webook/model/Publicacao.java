@@ -1,6 +1,8 @@
 package com.dias.mayara.webook.model;
 
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
+import com.dias.mayara.webook.helper.UsuarioFirebase;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 import java.util.HashMap;
@@ -26,14 +28,36 @@ public class Publicacao {
 
     }
 
-    public boolean salvar() {
-        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference postagensRef = firebaseRef
-                .child("postagens")
-                .child( getIdUsuario() )
-                .child( getId() );
+    // Metodo criado utilizando estratégia de espalhamento do firebase
+    public boolean salvar(DataSnapshot seguidoresSnapshot) {
 
-        postagensRef.setValue(this);
+        Map objeto = new HashMap();
+        Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+        //String idUsuarioLogado = usuarioLogado.getId();
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+
+        String combinacaoId = "/" + getIdUsuario() + "/" + getId();
+        objeto.put("/postagens" + combinacaoId, this);
+
+        for(DataSnapshot seguidores: seguidoresSnapshot.getChildren()) {
+
+            String idSeguidor = seguidores.getKey();
+
+            HashMap<String, Object> dadosSeguidor = new HashMap<>();
+            dadosSeguidor.put("caminhoFoto", getCaminhoFoto());
+            dadosSeguidor.put("descricao", getDescricao());
+            dadosSeguidor.put("id", getId());
+
+            dadosSeguidor.put("nomeUsuario", usuarioLogado.getNomeUsuario());
+            dadosSeguidor.put("caminhoFoto", usuarioLogado.getCaminhoFoto());
+
+            String idsAtualizacao = "/" + idSeguidor + "/" + getId();
+            objeto.put("/feed" + idsAtualizacao, dadosSeguidor);
+        }
+
+        firebaseRef.updateChildren(objeto);
+
+        // postagensRef.setValue(this);
 
         return true;
     }
