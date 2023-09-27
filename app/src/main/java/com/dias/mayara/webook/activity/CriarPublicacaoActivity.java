@@ -2,6 +2,7 @@ package com.dias.mayara.webook.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -46,6 +47,7 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
     private DatabaseReference usuariosRef;
     private DatabaseReference usuarioLogadoRef;
     private Usuario usuarioLogado;
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +92,8 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
     }
 
     private void criarPublicacao() {
+
+        abrirDialogCarregamento("Salvando publicação");
 
         Publicacao publicacao = new Publicacao();
 
@@ -144,6 +148,7 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
             usuarioLogado.setNumeroPostagens( quantidadePostagens );
             usuarioLogado.atualizarQuantidadePostagens();
 
+            dialog.cancel();
             finish();
         } else {
             Toast.makeText(CriarPublicacaoActivity.this,
@@ -152,8 +157,22 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
         }
     }
 
+    // Abrir tela de carregamento quando o usuario clica no botao de "criar publicação"
+    private void abrirDialogCarregamento(String titulo) {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(titulo);
+        alert.setCancelable(false); // Impede que o usuário cancele a tela de carregamento
+        alert.setView(R.layout.dialog_carregamento);
+
+        dialog = alert.create();
+        dialog.show();
+
+    }
+
     private void recuperarDadosUsuarioLogado(){
 
+        abrirDialogCarregamento("Carregando dados. Aguarde!");
         usuarioLogadoRef = usuariosRef.child( idUsuarioLogado );
         usuarioLogadoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -168,6 +187,8 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
 
             }
         });
+
+        dialog.cancel();
 
     }
 
