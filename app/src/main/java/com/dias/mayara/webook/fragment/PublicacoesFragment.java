@@ -11,13 +11,11 @@ import android.view.ViewGroup;
 
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.CriarPublicacaoActivity;
-import com.dias.mayara.webook.activity.PerfilAmigoActivity;
-import com.dias.mayara.webook.model.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class PublicacoesFragment extends Fragment {
 
-    private FloatingActionButton fabCriarPublicacao;
+    private FloatingActionButton fabCriarEvento;
 
     public PublicacoesFragment() {
         // Required empty public constructor
@@ -30,10 +28,10 @@ public class PublicacoesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_publicacoes, container, false);
 
         // Inicialização dos componentes
-        fabCriarPublicacao = view.findViewById(R.id.floatingActionButtonCriarPublicacao);
+        fabCriarEvento = view.findViewById(R.id.floatingActionButtonCriarPublicacao);
 
         // Evento de click no floating action button
-        fabCriarPublicacao.setOnClickListener(new View.OnClickListener() {
+        fabCriarEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

@@ -15,9 +15,9 @@ import android.view.MenuItem;
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.fragment.BibliotecaFragment;
 import com.dias.mayara.webook.fragment.EventosFragment;
+import com.dias.mayara.webook.fragment.PessoasFragment;
 import com.dias.mayara.webook.fragment.PerfilFragment;
 import com.dias.mayara.webook.fragment.PesquisarFragment;
-import com.dias.mayara.webook.fragment.PublicacoesFragment;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -42,21 +42,21 @@ public class MainActivity extends AppCompatActivity {
         autenticacao = ConfiguracaoFirebase.getFirebaseAuth();
 
         //Configurar bottom navigation view
-        confirgurarBottomNavigation();
+        configurarBottomNavigation();
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.viewPager, new PublicacoesFragment()).commit();
+        fragmentTransaction.replace(R.id.viewPager, new EventosFragment()).commit();
     }
 
-    private void confirgurarBottomNavigation() {
+    private void configurarBottomNavigation() {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Habilitar navegação
         habilitarNavegacao( bottomNavigationView );
 
-        // Configuração do item que aparece como selecionado inicialmente (fragment de publicacoes)
+        // Configuração do item que aparece como selecionado inicialmente (fragment de eventos)
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
         menuItem.setChecked(true);
@@ -99,13 +99,13 @@ public class MainActivity extends AppCompatActivity {
                 // Recuperar item do bottom navigation que foi selecionado
 
                 if(item.getItemId() == R.id.ic_home) {
-                    fragmentTransaction.replace(R.id.viewPager, new PublicacoesFragment()).commit();
+                    fragmentTransaction.replace(R.id.viewPager, new EventosFragment()).commit();
                     return true;
                 } else if(item.getItemId() == R.id.ic_pesquisar) {
                     fragmentTransaction.replace(R.id.viewPager, new PesquisarFragment()).commit();
                     return true;
-                } else if(item.getItemId() == R.id.ic_eventos) {
-                    fragmentTransaction.replace(R.id.viewPager, new EventosFragment()).commit();
+                } else if(item.getItemId() == R.id.ic_pessoas) {
+                    fragmentTransaction.replace(R.id.viewPager, new PessoasFragment()).commit();
                     return true;
                 } else if(item.getItemId() == R.id.ic_biblioteca) {
                     fragmentTransaction.replace(R.id.viewPager, new BibliotecaFragment()).commit();

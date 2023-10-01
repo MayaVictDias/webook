@@ -9,9 +9,9 @@
         android:icon="@drawable/ic_search_branco"
         android:title="Pesquisar" />
 
-    <item android:id="@+id/ic_eventos"
+    <item android:id="@+id/ic_pessoas"
         android:icon="@drawable/ic_group_branco"
-        android:title="Eventos" />
+        android:title="Pessoas" />
 
     <item android:id="@+id/ic_biblioteca"
         android:icon="@drawable/ic_book_branco"
