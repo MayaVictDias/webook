@@ -2,7 +2,6 @@ package com.dias.mayara.webook.helper;
 
 import android.net.Uri;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -65,9 +64,9 @@ public class UsuarioFirebase {
         usuario.setId( firebaseUser.getUid() );
 
         if ( firebaseUser.getPhotoUrl() == null ){
-            usuario.setCaminhoFoto("");
+            usuario.setCaminhoFotoUsuario("");
         } else {
-            usuario.setCaminhoFoto( firebaseUser.getPhotoUrl().toString() );
+            usuario.setCaminhoFotoUsuario( firebaseUser.getPhotoUrl().toString() );
         }
 
         return usuario;

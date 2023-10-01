@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +38,7 @@ import java.io.ByteArrayOutputStream;
 
 public class CriarPublicacaoActivity extends AppCompatActivity {
 
-    private EditText editTextTituloPublicacao, editTextNomeLivro, editTextDescricao;
+    private EditText editTextTituloPublicacao, editTextNomeLivro, editTextTextoPublicacao;
 
     private Button buttonAdicionarImagem, buttonCriarPublicacao;
     private ImageView imageViewImagemSelecionada;
@@ -101,8 +102,7 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
         Publicacao publicacao = new Publicacao();
 
         publicacao.setIdUsuario(idUsuarioLogado);
-        publicacao.setNomePublicacao(editTextTituloPublicacao.getText().toString());
-        publicacao.setDescricao(editTextDescricao.getText().toString());
+        publicacao.setTextoPublicacao(editTextTextoPublicacao.getText().toString());
 
         // Recuperar dados da imagem para o firebase caso tenha sido escolhida uma imagem
         if(imagemPublicacao != null) {
@@ -132,7 +132,8 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Uri> task) {
                             Uri url = task.getResult();
-                            publicacao.setCaminhoFoto(url.toString());
+                            publicacao.setCaminhoFotoPublicacao(url.toString());
+                            Log.i("Caminho foto publicacao: ", publicacao.getCaminhoFotoPublicacao());
 
                         }
                     });
@@ -245,7 +246,7 @@ public class CriarPublicacaoActivity extends AppCompatActivity {
 
         editTextTituloPublicacao = findViewById(R.id.editTextTituloPublicacao);
         editTextNomeLivro = findViewById(R.id.editTextNomeLivro);
-        editTextDescricao = findViewById(R.id.editTextDescricao);
+        editTextTextoPublicacao = findViewById(R.id.editTextDescricao);
 
         buttonAdicionarImagem = findViewById(R.id.buttonAdicionarImagem);
         buttonCriarPublicacao = findViewById(R.id.buttonCriarPublicacao);

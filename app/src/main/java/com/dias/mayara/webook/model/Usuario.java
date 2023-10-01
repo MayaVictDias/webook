@@ -14,7 +14,7 @@ public class Usuario implements Serializable {
     private String nomeUsuario;
     private String emailUsuario;
     private String senhaUsuario;
-    private String caminhoFoto;
+    private String caminhoFotoUsuario;
     private int numeroPostagens = 0;
     private int numeroFavoritos = 0;
     private int numeroSeguidores = 0;
@@ -51,7 +51,7 @@ public class Usuario implements Serializable {
         usuarioMap.put("emailUsuario", getEmailUsuario());
         usuarioMap.put("nomeUsuario", getNomeUsuario());
         usuarioMap.put("id", getId());
-        usuarioMap.put("caminhoFoto", getCaminhoFoto());
+        usuarioMap.put("caminhoFoto", getCaminhoFotoUsuario());
 
         usuarioMap.put("numeroPostagens", getNumeroPostagens());
         usuarioMap.put("numeroFavoritos", getNumeroFavoritos());
@@ -106,12 +106,12 @@ public class Usuario implements Serializable {
         this.numeroSeguindo = numeroSeguindo;
     }
 
-    public String getCaminhoFoto() {
-        return caminhoFoto;
+    public String getCaminhoFotoUsuario() {
+        return caminhoFotoUsuario;
     }
 
-    public void setCaminhoFoto(String caminhoFoto) {
-        this.caminhoFoto = caminhoFoto;
+    public void setCaminhoFotoUsuario(String caminhoFotoUsuario) {
+        this.caminhoFotoUsuario = caminhoFotoUsuario;
     }
 
     public String getId() {

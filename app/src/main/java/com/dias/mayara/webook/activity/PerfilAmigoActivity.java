@@ -85,7 +85,7 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
             usuarioSelecionado = (Usuario) bundle.getSerializable("usuarioSelecionado");
 
             // Recuperar foto do usuário
-            String caminhoFoto = usuarioSelecionado.getCaminhoFoto();
+            String caminhoFoto = usuarioSelecionado.getCaminhoFotoUsuario();
             if( caminhoFoto != null ){
                 Uri url = Uri.parse( caminhoFoto );
                 Glide.with(PerfilAmigoActivity.this)
@@ -176,7 +176,7 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
 
         HashMap<String, Object> dadosAmigo = new HashMap<>();
         dadosAmigo.put("nomeUsuario", usuarioAmigo.getNomeUsuario() );
-        dadosAmigo.put("caminhoFoto", usuarioAmigo.getCaminhoFoto() );
+        dadosAmigo.put("caminhoFoto", usuarioAmigo.getCaminhoFotoUsuario() );
         DatabaseReference seguidorRef = seguidoresRef
                 .child( usuarioLogado.getId() )
                 .child( usuarioAmigo.getId() );

@@ -12,9 +12,9 @@ public class Publicacao {
 
     private String id;
     private String idUsuario;
-    private String nomePublicacao;
-    private String descricao;
-    private String caminhoFoto;
+    private String nomeLivro;
+    private String textoPublicacao;
+    private String caminhoFotoPublicacao;
     private int numeroCurtidas;
     private int numeroComentarios;
 
@@ -44,12 +44,12 @@ public class Publicacao {
             String idSeguidor = seguidores.getKey();
 
             HashMap<String, Object> dadosSeguidor = new HashMap<>();
-            dadosSeguidor.put("caminhoFoto", getCaminhoFoto());
-            dadosSeguidor.put("descricao", getDescricao());
+            dadosSeguidor.put("caminhoFotoPublicacao", getCaminhoFotoPublicacao());
+            dadosSeguidor.put("textoPublicacao", getTextoPublicacao());
             dadosSeguidor.put("id", getId());
 
             dadosSeguidor.put("nomeUsuario", usuarioLogado.getNomeUsuario());
-            dadosSeguidor.put("caminhoFoto", usuarioLogado.getCaminhoFoto());
+            dadosSeguidor.put("caminhoFotoUsuario", usuarioLogado.getCaminhoFotoUsuario());
 
             String idsAtualizacao = "/" + idSeguidor + "/" + getId();
             objeto.put("/feed" + idsAtualizacao, dadosSeguidor);
@@ -66,6 +66,14 @@ public class Publicacao {
         return idUsuario;
     }
 
+    public String getNomeLivro() {
+        return nomeLivro;
+    }
+
+    public void setNomeLivro(String nomeLivro) {
+        this.nomeLivro = nomeLivro;
+    }
+
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
@@ -78,28 +86,20 @@ public class Publicacao {
         this.id = id;
     }
 
-    public String getNomePublicacao() {
-        return nomePublicacao;
+    public String getTextoPublicacao() {
+        return textoPublicacao;
     }
 
-    public void setNomePublicacao(String nomePublicacao) {
-        this.nomePublicacao = nomePublicacao;
+    public void setTextoPublicacao(String textoPublicacao) {
+        this.textoPublicacao = textoPublicacao;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getCaminhoFotoPublicacao() {
+        return caminhoFotoPublicacao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public String getCaminhoFoto() {
-        return caminhoFoto;
-    }
-
-    public void setCaminhoFoto(String caminhoFoto) {
-        this.caminhoFoto = caminhoFoto;
+    public void setCaminhoFotoPublicacao(String caminhoFotoPublicacao) {
+        this.caminhoFotoPublicacao = caminhoFotoPublicacao;
     }
 
     public int getNumeroCurtidas() {
@@ -125,11 +125,9 @@ public class Publicacao {
     public Map<String, Object> converterParaMap() {
 
         HashMap<String, Object> publicacaoMap = new HashMap<>();
-        publicacaoMap.put("nomePublicacao", getNomePublicacao());
-        publicacaoMap.put("descricao", getDescricao());
-        publicacaoMap.put("caminhoFoto", getCaminhoFoto());
-        publicacaoMap.put("numeroCurtidas", getNumeroCurtidas());
-        publicacaoMap.put("numeroComentarios", getNumeroComentarios());
+        publicacaoMap.put("nomeLivro", getNomeLivro());
+        publicacaoMap.put("textoPublicacao", getTextoPublicacao());
+        publicacaoMap.put("caminhoFotoPublicacao", getCaminhoFotoPublicacao());
 
         return publicacaoMap;
     }

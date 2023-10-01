@@ -45,8 +45,8 @@ public class PesquisaAdapter extends RecyclerView.Adapter<PesquisaAdapter.MyView
         holder.nomeUsuario.setText(usuario.getNomeUsuario());
 
         // Testar se o usuário tem uma imagem pra ser recuperada
-        if( usuario.getCaminhoFoto() != null ){
-            Uri uri = Uri.parse( usuario.getCaminhoFoto() );
+        if( usuario.getCaminhoFotoUsuario() != null ){
+            Uri uri = Uri.parse( usuario.getCaminhoFotoUsuario() );
             Glide.with(context).load(uri).into(holder.fotoUsuario);
         }else {
             holder.fotoUsuario.setImageResource(R.drawable.icone_account_circle);
