@@ -1,5 +1,7 @@
 package com.dias.mayara.webook.activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -11,8 +13,17 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.dias.mayara.webook.R;
+import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
+import com.dias.mayara.webook.helper.UsuarioFirebase;
+import com.dias.mayara.webook.model.Evento;
+import com.dias.mayara.webook.model.Usuario;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -22,8 +33,15 @@ public class CriarEventoActivity extends AppCompatActivity {
     private Button buttonSelecionarDataHora;
     private Calendar calendar;
     private String dataHoraFormatada;
-    private EditText dataHoraEvento;
     private Button buttonCriarEvento;
+    private AlertDialog dialog;
+    private String idUsuarioLogado;
+    private EditText editTextNomeEvento, editTextLocalEvento, editTextNomeLivroASerDiscutido,
+            dataHoraEvento, editTextSobreOEvento;
+    private Usuario usuarioLogado;
+    private DatabaseReference firebaseRef;
+    private DatabaseReference usuariosRef;
+    private DatabaseReference usuarioLogadoRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +58,22 @@ public class CriarEventoActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_voltar_branco);
 
+        // Configurações iniciais
+        idUsuarioLogado = UsuarioFirebase.getIdentificadorUsuario();
+        usuariosRef = ConfiguracaoFirebase.getFirebase().child("usuarios");
+        firebaseRef = ConfiguracaoFirebase.getFirebase();
+
+        recuperarDadosEvento();
+
         // Inicialização dos componentes
         buttonSelecionarDataHora = findViewById(R.id.btnSelecionarDataHora);
         calendar = Calendar.getInstance();
         dataHoraEvento = findViewById(R.id.dataHoraEvento);
+        buttonCriarEvento = findViewById(R.id.buttonCriarEvento);
+        editTextNomeEvento = findViewById(R.id.editTextNomeEvento);
+        editTextLocalEvento = findViewById(R.id.editTextLocalEvento);
+        editTextNomeLivroASerDiscutido = findViewById(R.id.editTextNomeLivroASerDiscutido);
+        editTextSobreOEvento = findViewById(R.id.editTextSobreOEvento);
 
         buttonSelecionarDataHora.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +81,45 @@ public class CriarEventoActivity extends AppCompatActivity {
                 abrirDatePicker();
             }
         });
+
+        buttonCriarEvento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                criarEvento();
+            }
+        });
+    }
+
+    private void criarEvento() {
+
+        abrirDialogCarregamento("Criando evento");
+
+        Evento evento = new Evento();
+
+        evento.setIdUsuario(idUsuarioLogado);
+        evento.setNomeEvento(editTextNomeEvento.getText().toString());
+        evento.setNomeLocalEvento(editTextLocalEvento.getText().toString());
+        evento.setDataHoraEvento(dataHoraEvento.getText().toString());
+        evento.setSobreEvento(editTextSobreOEvento.getText().toString());
+
+        // Atualizar quantidade de eventos
+        int quantidadeEventos = usuarioLogado.getNumeroEventos() + 1;
+        usuarioLogado.setNumeroEventos( quantidadeEventos );
+        usuarioLogado.atualizarQuantidadeEventos();
+
+        if(evento.salvar()) {
+
+            Toast.makeText(CriarEventoActivity.this,
+                    "Sucesso ao salvar evento!",
+                    Toast.LENGTH_SHORT).show();
+
+            dialog.cancel();
+            finish();
+        } else {
+            Toast.makeText(CriarEventoActivity.this,
+                    "Erro!",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     // Abre calendario para o usuário selecionar uma data
@@ -93,9 +162,42 @@ public class CriarEventoActivity extends AppCompatActivity {
                 }, hora, minuto, true);
 
         timePickerDialog.show();
+    }
 
+    private void abrirDialogCarregamento(String titulo) {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle(titulo);
+        alert.setCancelable(false); // Impede que o usuário cancele a tela de carregamento
+        alert.setView(R.layout.dialog_carregamento);
+
+        dialog = alert.create();
+        dialog.show();
 
     }
+
+    private void recuperarDadosEvento(){
+
+        abrirDialogCarregamento("Carregando dados. Aguarde!");
+        usuarioLogadoRef = usuariosRef.child( idUsuarioLogado );
+        usuarioLogadoRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                // Recupera dados de usuário logado
+                usuarioLogado = snapshot.getValue( Usuario.class );
+
+                dialog.cancel();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
 
     // Método que ajusta o botão de voltar para ele fechar a activity atual
@@ -104,5 +206,10 @@ public class CriarEventoActivity extends AppCompatActivity {
 
         finish();
         return false;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }

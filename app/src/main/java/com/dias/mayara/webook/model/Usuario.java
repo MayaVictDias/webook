@@ -16,6 +16,7 @@ public class Usuario implements Serializable {
     private String senhaUsuario;
     private String caminhoFoto;
     private int numeroPostagens = 0;
+    private int numeroEventos = 0;
     private int numeroFavoritos = 0;
     private int numeroSeguidores = 0;
     private int numeroSeguindo = 0;
@@ -53,7 +54,7 @@ public class Usuario implements Serializable {
         usuarioMap.put("id", getId());
         usuarioMap.put("caminhoFoto", getCaminhoFoto());
 
-        usuarioMap.put("numeroPostagens", getNumeroPostagens());
+        usuarioMap.put("numeroEventos", getNumeroEventos());
         usuarioMap.put("numeroFavoritos", getNumeroFavoritos());
         usuarioMap.put("numeroSeguidores", getNumeroSeguidores());
         usuarioMap.put("numeroSeguindo", getNumeroSeguindo());
@@ -70,6 +71,19 @@ public class Usuario implements Serializable {
 
         HashMap<String, Object> dados = new HashMap<>();
         dados.put("numeroPostagens", getNumeroPostagens() );
+
+        usuariosRef.updateChildren( dados );
+    }
+
+    public void atualizarQuantidadeEventos() {
+
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+        DatabaseReference usuariosRef = firebaseRef
+                .child("usuarios")
+                .child( getId() );
+
+        HashMap<String, Object> dados = new HashMap<>();
+        dados.put("numeroEventos", getNumeroEventos() );
 
         usuariosRef.updateChildren( dados );
     }
@@ -128,6 +142,14 @@ public class Usuario implements Serializable {
 
     public void setNomeUsuario(String nomeUsuario) {
         this.nomeUsuario = nomeUsuario;
+    }
+
+    public int getNumeroEventos() {
+        return numeroEventos;
+    }
+
+    public void setNumeroEventos(int numeroEventos) {
+        this.numeroEventos = numeroEventos;
     }
 
     public String getEmailUsuario() {
