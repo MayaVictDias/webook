@@ -31,7 +31,7 @@ public class PerfilFragment extends Fragment {
 
     private CircleImageView imageViewFotoUsuario;
     private TextView textViewNomeUsuario;
-    private TextView textViewQuantidadePostagensUsuario;
+    private TextView textViewQuantidadeEventosUsuario;
     private TextView textViewQuantidadeFavoritos;
     private TextView textViewQuantidadeSeguidores;
     private TextView textViewQuantidadeSeguindo;
@@ -90,8 +90,7 @@ public class PerfilFragment extends Fragment {
         // Configuração dos componentes
         imageViewFotoUsuario = view.findViewById(R.id.imageViewFotoUsuario);
         textViewNomeUsuario = view.findViewById(R.id.textViewNomeUsuario);
-        textViewQuantidadePostagensUsuario = view.findViewById(R.id.textViewQuantidadePostagensUsuario);
-        textViewQuantidadeFavoritos = view.findViewById(R.id.textViewQuantidadeFavoritosUsuario);
+        textViewQuantidadeEventosUsuario = view.findViewById(R.id.textViewQuantidadeEventosUsuario);
         textViewQuantidadeSeguidores = view.findViewById(R.id.textViewQuantidadeSeguidoresUsuario);
         textViewQuantidadeSeguindo = view.findViewById(R.id.textViewQuantidadeSeguindoUsuario);
         buttonAcaoPerfil = view.findViewById(R.id.buttonAcao);
@@ -108,14 +107,12 @@ public class PerfilFragment extends Fragment {
 
                 textViewNomeUsuario.setText(usuario.getNomeUsuario());
 
-                String numeroPostagens = String.valueOf( usuario.getNumeroPostagens() );
-                String numeroFavoritos = String.valueOf(usuario.getNumeroFavoritos());
+                String numeroEventos = String.valueOf( usuario.getNumeroEventos() );
                 String numeroSeguindo = String.valueOf( usuario.getNumeroSeguindo() );
                 String numeroSeguidores = String.valueOf( usuario.getNumeroSeguidores() );
 
                 // Configura valores recuperados
-                textViewQuantidadePostagensUsuario.setText( numeroPostagens );
-                textViewQuantidadeFavoritos.setText( numeroFavoritos );
+                textViewQuantidadeEventosUsuario.setText( numeroEventos );
                 textViewQuantidadeSeguidores.setText( numeroSeguindo );
                 textViewQuantidadeSeguindo.setText( numeroSeguidores );
 

@@ -32,7 +32,7 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
     private Button buttonAcaoPerfil;
     private ImageView imageViewFotoUsuario;
 
-    private TextView textViewQuantidadePostagensUsuario, textViewQuantidadeFavoritosUsuario,
+    private TextView textViewQuantidadeEventosUsuario,
             textViewQuantidadeSeguidoresUsuario, textViewQuantidadeSeguindoUsuario;
 
     private String idUsuarioLogado;
@@ -71,8 +71,7 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
         buttonAcaoPerfil = findViewById(R.id.buttonAcao);
         imageViewFotoUsuario = findViewById(R.id.imageViewFotoUsuario);
 
-        textViewQuantidadePostagensUsuario = findViewById(R.id.textViewQuantidadePostagensUsuario);
-        textViewQuantidadeFavoritosUsuario = findViewById(R.id.textViewQuantidadeFavoritosUsuario);
+        textViewQuantidadeEventosUsuario = findViewById(R.id.textViewQuantidadeEventosUsuario);
         textViewQuantidadeSeguidoresUsuario = findViewById(R.id.textViewQuantidadeSeguidoresUsuario);
         textViewQuantidadeSeguindoUsuario = findViewById(R.id.textViewQuantidadeSeguindoUsuario);
 
@@ -238,15 +237,13 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
                         Usuario usuario = snapshot.getValue(Usuario.class);
 
                         String nomeUsuario = usuario.getNomeUsuario();
-                        String numeroPostagens = String.valueOf(usuario.getNumeroPostagens());
-                        String numeroFavoritos = String.valueOf(usuario.getNumeroFavoritos());
+                        String numeroEventos = String.valueOf(usuario.getNumeroEventos());
                         String numeroSeguidores = String.valueOf(usuario.getNumeroSeguidores());
                         String numeroSeguindo = String.valueOf(usuario.getNumeroSeguindo());
 
                         // Configura valores recuperados
                         textViewNomeUsuario.setText(nomeUsuario);
-                        textViewQuantidadePostagensUsuario.setText(numeroPostagens);
-                        textViewQuantidadeFavoritosUsuario.setText(numeroFavoritos);
+                        textViewQuantidadeEventosUsuario.setText(numeroEventos);
                         textViewQuantidadeSeguidoresUsuario.setText(numeroSeguidores);
                         textViewQuantidadeSeguindoUsuario.setText(numeroSeguindo);
 
