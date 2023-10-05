@@ -3,6 +3,8 @@ package com.dias.mayara.webook.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,15 +16,19 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.dias.mayara.webook.R;
+import com.dias.mayara.webook.adapter.EventosAdapter;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
+import com.dias.mayara.webook.model.Evento;
 import com.dias.mayara.webook.model.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class        PerfilAmigoActivity extends AppCompatActivity {
 
@@ -34,6 +40,7 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
 
     private TextView textViewQuantidadeEventosUsuario,
             textViewQuantidadeSeguidoresUsuario, textViewQuantidadeSeguindoUsuario;
+    private RecyclerView recyclerViewPerfil;
 
     private String idUsuarioLogado;
 
@@ -42,8 +49,12 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
     private DatabaseReference usuarioAmigoRef;
     private DatabaseReference seguidoresRef;
     private DatabaseReference usuarioLogadoRef;
+    private DatabaseReference eventosRef;
 
     private ValueEventListener valueEventListenerPerfilAmigo;
+    private ValueEventListener valueEventListenerEventos;
+    private EventosAdapter eventosAdapter;
+    private List<Evento> listaEventos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +85,13 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
         textViewQuantidadeEventosUsuario = findViewById(R.id.textViewQuantidadeEventosUsuario);
         textViewQuantidadeSeguidoresUsuario = findViewById(R.id.textViewQuantidadeSeguidoresUsuario);
         textViewQuantidadeSeguindoUsuario = findViewById(R.id.textViewQuantidadeSeguindoUsuario);
+
+        recyclerViewPerfil = findViewById(R.id.recyclerViewPerfil);
+
+        recyclerViewPerfil.setHasFixedSize(true);
+        recyclerViewPerfil.setLayoutManager(new LinearLayoutManager(this));
+        eventosAdapter = new EventosAdapter(listaEventos, this);
+        recyclerViewPerfil.setAdapter(eventosAdapter);
 
         buttonAcaoPerfil.setText("Carregando");
 
@@ -214,6 +232,8 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
         recuperarDadosPerfilAmigo();
 
         recuperarDadosUsuarioLogado();
+
+        listarEventos();
     }
 
     @Override
@@ -255,6 +275,26 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
                     }
                 }
         );
+    }
+
+    private void listarEventos() {
+
+        eventosRef = ConfiguracaoFirebase.getFirebase().child("eventos").child(usuarioSelecionado.getId());
+
+        valueEventListenerEventos = eventosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds: snapshot.getChildren() ){
+                    listaEventos.add(ds.getValue(Evento.class));
+                }
+                eventosAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public boolean onSupportNavigateUp() {

@@ -42,6 +42,7 @@ public class CriarEventoActivity extends AppCompatActivity {
     private DatabaseReference firebaseRef;
     private DatabaseReference usuariosRef;
     private DatabaseReference usuarioLogadoRef;
+    private DataSnapshot seguidoresSnapshot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +108,7 @@ public class CriarEventoActivity extends AppCompatActivity {
         usuarioLogado.setNumeroEventos( quantidadeEventos );
         usuarioLogado.atualizarQuantidadeEventos();
 
-        if(evento.salvar()) {
+        if(evento.salvar(seguidoresSnapshot)) {
 
             Toast.makeText(CriarEventoActivity.this,
                     "Sucesso ao salvar evento!",
@@ -179,6 +180,7 @@ public class CriarEventoActivity extends AppCompatActivity {
     private void recuperarDadosEvento(){
 
         abrirDialogCarregamento("Carregando dados. Aguarde!");
+
         usuarioLogadoRef = usuariosRef.child( idUsuarioLogado );
         usuarioLogadoRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -187,16 +189,34 @@ public class CriarEventoActivity extends AppCompatActivity {
                 // Recupera dados de usuário logado
                 usuarioLogado = snapshot.getValue( Usuario.class );
 
-                dialog.cancel();
+                // Recuperar os seguidores do usuário
+                DatabaseReference seguidoresRef = firebaseRef.child("seguidores")
+                        .child(idUsuarioLogado);
 
+                seguidoresRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        seguidoresSnapshot = snapshot;
+
+                        dialog.cancel();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        // Handle onCancelled
+                    }
+                });
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                // Handle onCancelled
             }
         });
     }
+
 
 
 

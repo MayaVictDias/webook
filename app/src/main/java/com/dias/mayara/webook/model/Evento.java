@@ -27,13 +27,46 @@ public class Evento {
         setId(idEvento);
     }
 
-    public boolean salvar() {
-        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+    public boolean salvar(DataSnapshot seguidoresSnapshot) {
+        /*DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
         DatabaseReference eventosRef = firebaseRef
                 .child("eventos")
-                .child( getIdUsuario() );
+                .child( getIdUsuario() )
+                .child( getId() );
 
         eventosRef.setValue(this);
+
+        return true;
+
+         */
+
+        Map objeto = new HashMap();
+        Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+        DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
+
+        String combinacaoId = "/" + getIdUsuario() + "/" + getId();
+        objeto.put("/eventos" + combinacaoId, this);
+
+        for(DataSnapshot seguidores: seguidoresSnapshot.getChildren()) {
+
+            String idSeguidor = seguidores.getKey();
+
+            HashMap<String, Object> dadosEvento = new HashMap<>();
+            dadosEvento.put("nomeEvento", getNomeEvento());
+            dadosEvento.put("nomeLocalEvento", getNomeLocalEvento());
+            dadosEvento.put("dataHoraEvento", getDataHoraEvento());
+            dadosEvento.put("sobreEvento", getSobreEvento());
+
+            dadosEvento.put("nomeUsuario", usuarioLogado.getNomeUsuario());
+            dadosEvento.put("caminhoFotoUsuario", usuarioLogado.getCaminhoFoto());
+
+            String idsAtualizacao = "/" + idSeguidor + "/" + getId();
+            objeto.put("/feed" + idsAtualizacao, dadosEvento);
+        }
+
+        firebaseRef.updateChildren(objeto);
+
+        // postagensRef.setValue(this);
 
         return true;
     }
@@ -41,6 +74,7 @@ public class Evento {
     public Map<String, Object> converterParaMap() {
 
         HashMap<String, Object> eventoMap = new HashMap<>();
+        eventoMap.put("id", getId());
         eventoMap.put("nomeEvento", getNomeEvento());
         eventoMap.put("nomeLocalEvento", getNomeLocalEvento());
         eventoMap.put("dataHoraEvento", getDataHoraEvento());

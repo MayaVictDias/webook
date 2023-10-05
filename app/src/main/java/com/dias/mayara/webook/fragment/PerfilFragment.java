@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,14 +18,20 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.EdicaoPerfilActivity;
+import com.dias.mayara.webook.adapter.EventosAdapter;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
+import com.dias.mayara.webook.model.Evento;
 import com.dias.mayara.webook.model.Usuario;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -45,6 +53,21 @@ public class PerfilFragment extends Fragment {
     private Usuario usuarioLogado;
     private FirebaseUser usuarioPerfil;
 
+
+
+
+    private RecyclerView recyclerView;
+    private EventosAdapter eventosAdapter;
+    private List<Evento> listaEventos = new ArrayList<>();
+    private ValueEventListener valueEventListenerEventos;
+    private DatabaseReference eventosRef;
+    private UsuarioFirebase usuarioFirebase;
+    private String idUsuarioLogado;
+
+
+
+
+
     public PerfilFragment() {
         // Required empty public constructor
     }
@@ -57,8 +80,10 @@ public class PerfilFragment extends Fragment {
 
         // Configurações iniciais
         usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+        idUsuarioLogado = usuarioFirebase.getIdentificadorUsuario();
         firebaseRef = ConfiguracaoFirebase.getFirebase();
         usuariosRef = firebaseRef.child("usuarios");
+        eventosRef = ConfiguracaoFirebase.getFirebase().child("eventos").child(idUsuarioLogado);
 
         inicializarComponentes(view);
 
@@ -82,6 +107,11 @@ public class PerfilFragment extends Fragment {
             }
         });
 
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        eventosAdapter = new EventosAdapter(listaEventos, getActivity());
+        recyclerView.setAdapter(eventosAdapter);
+
         return view;
     }
 
@@ -94,6 +124,8 @@ public class PerfilFragment extends Fragment {
         textViewQuantidadeSeguidores = view.findViewById(R.id.textViewQuantidadeSeguidoresUsuario);
         textViewQuantidadeSeguindo = view.findViewById(R.id.textViewQuantidadeSeguindoUsuario);
         buttonAcaoPerfil = view.findViewById(R.id.buttonAcao);
+
+        recyclerView = view.findViewById(R.id.recyclerViewPerfil);
     }
 
     private void recuperarDadosUsuarioLogado(){
@@ -126,6 +158,24 @@ public class PerfilFragment extends Fragment {
 
     }
 
+    private void listarEventos() {
+
+        valueEventListenerEventos = eventosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds: snapshot.getChildren() ){
+                    listaEventos.add(ds.getValue(Evento.class));
+                }
+                eventosAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     @Override
     public void onStart() {
         super.onStart();
@@ -133,5 +183,13 @@ public class PerfilFragment extends Fragment {
         // Recuperar dados do usuario logado
         recuperarDadosUsuarioLogado();
 
+        listarEventos();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        eventosRef.removeEventListener(valueEventListenerEventos);
     }
 }
