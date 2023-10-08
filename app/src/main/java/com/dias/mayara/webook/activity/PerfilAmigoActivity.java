@@ -170,6 +170,13 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
 
         if ( seSegueUsuario ){
             buttonAcaoPerfil.setText("Seguindo");
+
+            buttonAcaoPerfil.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    removerSeguidor(usuarioLogado, usuarioSelecionado);
+                }
+            });
         } else {
 
             buttonAcaoPerfil.setText("Seguir");
@@ -185,6 +192,34 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
             });
 
         }
+
+
+    }
+
+    private void removerSeguidor(Usuario usuarioLogado, Usuario usuarioAmigo) {
+
+        DatabaseReference seguidorRef = seguidoresRef
+                .child(usuarioLogado.getId())
+                .child(usuarioAmigo.getId());
+        seguidorRef.removeValue();
+
+        // Alterar botao acao para seguindo
+        buttonAcaoPerfil.setText("Seguir");
+        buttonAcaoPerfil.setOnClickListener(null);
+
+        // Reduzir o contador de seguindo do usuário logado
+        int numeroSeguindo = usuarioLogado.getNumeroSeguindo() - 1;
+        HashMap<String, Object> dadosSeguindo = new HashMap<>();
+        dadosSeguindo.put("numeroSeguindo", numeroSeguindo);
+        DatabaseReference usuarioSeguindo = usuariosRef.child(usuarioLogado.getId());
+        usuarioSeguindo.updateChildren(dadosSeguindo);
+
+        // Reduzir o contador de seguidores do amigo
+        int numeroSeguidores = usuarioAmigo.getNumeroSeguidores() - 1;
+        HashMap<String, Object> dadosSeguidores = new HashMap<>();
+        dadosSeguidores.put("numeroSeguidores", numeroSeguidores);
+        DatabaseReference usuarioSeguidores = usuariosRef.child(usuarioAmigo.getId());
+        usuarioSeguidores.updateChildren(dadosSeguidores);
 
 
     }

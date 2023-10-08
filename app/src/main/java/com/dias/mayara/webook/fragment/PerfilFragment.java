@@ -145,8 +145,8 @@ public class PerfilFragment extends Fragment {
 
                 // Configura valores recuperados
                 textViewQuantidadeEventosUsuario.setText( numeroEventos );
-                textViewQuantidadeSeguidores.setText( numeroSeguindo );
-                textViewQuantidadeSeguindo.setText( numeroSeguidores );
+                textViewQuantidadeSeguidores.setText( numeroSeguidores );
+                textViewQuantidadeSeguindo.setText( numeroSeguindo );
 
             }
 
