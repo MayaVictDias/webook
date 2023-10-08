@@ -101,6 +101,7 @@ public class CriarEventoActivity extends AppCompatActivity {
         evento.setNomeEvento(editTextNomeEvento.getText().toString());
         evento.setNomeLocalEvento(editTextLocalEvento.getText().toString());
         evento.setDataHoraEvento(dataHoraEvento.getText().toString());
+        evento.setNomeLivro(editTextNomeLivroASerDiscutido.getText().toString());
         evento.setSobreEvento(editTextSobreOEvento.getText().toString());
 
         // Atualizar quantidade de eventos
@@ -216,9 +217,6 @@ public class CriarEventoActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 
     // Método que ajusta o botão de voltar para ele fechar a activity atual
     @Override

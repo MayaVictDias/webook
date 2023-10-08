@@ -16,6 +16,7 @@ public class Evento {
     private String nomeEvento;
     private String nomeLocalEvento;
     private String dataHoraEvento;
+    private String nomeLivro;
     private String sobreEvento;
 
     public Evento() {
@@ -28,17 +29,6 @@ public class Evento {
     }
 
     public boolean salvar(DataSnapshot seguidoresSnapshot) {
-        /*DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
-        DatabaseReference eventosRef = firebaseRef
-                .child("eventos")
-                .child( getIdUsuario() )
-                .child( getId() );
-
-        eventosRef.setValue(this);
-
-        return true;
-
-         */
 
         Map objeto = new HashMap();
         Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
@@ -57,8 +47,7 @@ public class Evento {
             dadosEvento.put("dataHoraEvento", getDataHoraEvento());
             dadosEvento.put("sobreEvento", getSobreEvento());
 
-            dadosEvento.put("nomeUsuario", usuarioLogado.getNomeUsuario());
-            dadosEvento.put("caminhoFotoUsuario", usuarioLogado.getCaminhoFoto());
+            dadosEvento.put("idUsuario", usuarioLogado.getId());
 
             String idsAtualizacao = "/" + idSeguidor + "/" + getId();
             objeto.put("/feed" + idsAtualizacao, dadosEvento);
@@ -78,6 +67,7 @@ public class Evento {
         eventoMap.put("nomeEvento", getNomeEvento());
         eventoMap.put("nomeLocalEvento", getNomeLocalEvento());
         eventoMap.put("dataHoraEvento", getDataHoraEvento());
+        eventoMap.put("nomeLivro", getNomeLivro());
         eventoMap.put("sobreEvento", getSobreEvento());
 
         return eventoMap;
@@ -85,6 +75,14 @@ public class Evento {
 
     public String getId() {
         return id;
+    }
+
+    public String getNomeLivro() {
+        return nomeLivro;
+    }
+
+    public void setNomeLivro(String nomeLivro) {
+        this.nomeLivro = nomeLivro;
     }
 
     public void setId(String id) {
