@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -111,6 +112,32 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
             }
 
         }
+
+
+
+        textViewQuantidadeEventosUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PerfilAmigoActivity.this, EventosUsuarioActivity.class);
+                startActivity(i);
+            }
+        });
+
+        textViewQuantidadeSeguidoresUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PerfilAmigoActivity.this, SeguidoresUsuarioActivity.class);
+                startActivity(i);
+            }
+        });
+
+        textViewQuantidadeSeguindoUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(PerfilAmigoActivity.this, SeguindoUsuarioActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void recuperarDadosUsuarioLogado() {

@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.EdicaoPerfilActivity;
+import com.dias.mayara.webook.activity.EventosUsuarioActivity;
+import com.dias.mayara.webook.activity.SeguidoresUsuarioActivity;
+import com.dias.mayara.webook.activity.SeguindoUsuarioActivity;
 import com.dias.mayara.webook.adapter.EventosAdapter;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
@@ -103,6 +106,30 @@ public class PerfilFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), EdicaoPerfilActivity.class);
+                startActivity(i);
+            }
+        });
+
+        textViewQuantidadeEventosUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), EventosUsuarioActivity.class);
+                startActivity(i);
+            }
+        });
+
+        textViewQuantidadeSeguidores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), SeguidoresUsuarioActivity.class);
+                startActivity(i);
+            }
+        });
+
+        textViewQuantidadeSeguindo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), SeguindoUsuarioActivity.class);
                 startActivity(i);
             }
         });
