@@ -13,9 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.dias.mayara.webook.R;
-import com.dias.mayara.webook.fragment.BibliotecaFragment;
 import com.dias.mayara.webook.fragment.EventosFragment;
-import com.dias.mayara.webook.fragment.PessoasFragment;
 import com.dias.mayara.webook.fragment.PerfilFragment;
 import com.dias.mayara.webook.fragment.PesquisarFragment;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
