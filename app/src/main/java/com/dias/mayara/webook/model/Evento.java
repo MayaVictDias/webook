@@ -43,7 +43,7 @@ public class Evento {
             dadosEvento.put("nomeLocalEvento", getNomeLocalEvento());
             dadosEvento.put("dataHoraEvento", getDataHoraEvento());
             dadosEvento.put("sobreEvento", getSobreEvento());
-            dadosEvento.put("nomeLivroASerDiscutido", getNomeLivro());
+            dadosEvento.put("nomeLivro", getNomeLivro());
 
             dadosEvento.put("idPublicacao", getId());
             dadosEvento.put("idUsuario", usuarioLogado.getId());

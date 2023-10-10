@@ -104,11 +104,6 @@ public class CriarEventoActivity extends AppCompatActivity {
         evento.setNomeLivro(editTextNomeLivroASerDiscutido.getText().toString());
         evento.setSobreEvento(editTextSobreOEvento.getText().toString());
 
-        // Atualizar quantidade de eventos
-        int quantidadeEventos = usuarioLogado.getNumeroEventos() + 1;
-        usuarioLogado.setNumeroEventos( quantidadeEventos );
-        usuarioLogado.atualizarQuantidadeEventos();
-
         if(evento.salvar(seguidoresSnapshot)) {
 
             Toast.makeText(CriarEventoActivity.this,

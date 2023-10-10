@@ -31,7 +31,7 @@ public class EventosFragment extends Fragment {
 
     private FloatingActionButton floatingActionButtonCriarPublicacao;
     private RecyclerView recyclerView;
-    private EventosAdapter eventosAdapter;
+    private EventosAdapter feedEventosAdapter;
     private List<Evento> listaFeedEventos = new ArrayList<>();
     private ValueEventListener valueEventListenerEventos;
     private DatabaseReference feedEventosRef;
@@ -53,13 +53,14 @@ public class EventosFragment extends Fragment {
         idUsuarioLogado = usuarioFirebase.getIdentificadorUsuario();
 
         floatingActionButtonCriarPublicacao = view.findViewById(R.id.floatingActionButtonCriarPublicacao);
+
         recyclerView = view.findViewById(R.id.recyclerView);
         feedEventosRef = ConfiguracaoFirebase.getFirebase().child("feedEventos");
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        eventosAdapter = new EventosAdapter(listaFeedEventos, getActivity());
-        recyclerView.setAdapter(eventosAdapter);
+        feedEventosAdapter = new EventosAdapter(listaFeedEventos, getActivity());
+        recyclerView.setAdapter(feedEventosAdapter);
 
         floatingActionButtonCriarPublicacao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +83,7 @@ public class EventosFragment extends Fragment {
                 for (DataSnapshot ds: snapshot.getChildren() ){
                     listaFeedEventos.add(ds.getValue(Evento.class));
                 }
-                eventosAdapter.notifyDataSetChanged();
+                feedEventosAdapter.notifyDataSetChanged();
             }
 
             @Override

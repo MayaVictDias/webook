@@ -13,19 +13,7 @@
         android:theme="@style/Theme.Webook"
         tools:targetApi="31">
         <activity
-            android:name=".activity.SeguindoUsuarioActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.SeguidoresUsuarioActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.EventosUsuarioActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.CriarEventoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.CriarPublicacaoActivity"
             android:exported="false" />
         <activity
             android:name=".activity.PerfilAmigoActivity"

@@ -56,30 +56,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextLoginEmail" />
 
-    <CheckBox
-        android:id="@+id/checkBoxManterLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Manter-se conectado"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextLoginSenha" />
-
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:background="@color/primaryColor"
         android:text="Login"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBoxManterLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextLoginSenha" />
 
     <ProgressBar
         android:id="@+id/progressBar2"

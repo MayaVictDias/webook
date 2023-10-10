@@ -206,43 +206,6 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
 
     }
 
-    private void salvarSeguidor(Usuario usuarioLogado, Usuario usuarioAmigo) {
-
-        abrirDialogCarregamento("Salvando seguidor");
-
-        HashMap<String, Object> dadosAmigo = new HashMap<>();
-        dadosAmigo.put("nomeUsuario", usuarioAmigo.getNomeUsuario() );
-        dadosAmigo.put("caminhoFoto", usuarioAmigo.getCaminhoFoto() );
-        DatabaseReference seguidorRef = seguindoRef
-                .child( usuarioLogado.getId() )
-                .child( usuarioAmigo.getId() );
-        seguidorRef.setValue( dadosAmigo );
-
-
-        // Incrementar seguindo do usuário logado
-        int numeroSeguindo = usuarioLogado.getNumeroSeguindo() + 1;
-
-        HashMap<String, Object> dadosSeguindo = new HashMap<>();
-        dadosSeguindo.put("numeroSeguindo", numeroSeguindo );
-
-        DatabaseReference usuarioSeguindo = usuariosRef
-                .child( usuarioLogado.getId() );
-        usuarioSeguindo.updateChildren( dadosSeguindo );
-
-        // Incrementar seguidores do amigo
-        int numeroSeguidores = usuarioAmigo.getNumeroSeguidores() + 1;
-
-        HashMap<String, Object> dadosSeguidores = new HashMap<>();
-        dadosSeguidores.put("numeroSeguidores", numeroSeguidores );
-
-        DatabaseReference usuarioSeguidores = usuariosRef
-                .child( usuarioAmigo.getId() );
-        usuarioSeguidores.updateChildren( dadosSeguidores );
-
-        dialog.cancel();
-
-    }
-
     // Metodo que é chamado logo após o CreateView
     @Override
     protected void onStart() {
