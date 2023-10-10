@@ -1,6 +1,7 @@
 package com.dias.mayara.webook.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -20,15 +21,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.CriarEventoActivity;
+import com.dias.mayara.webook.activity.PerfilAmigoActivity;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Evento;
+import com.dias.mayara.webook.model.Usuario;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -41,6 +45,8 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
         private DatabaseReference feedEventoRef;
         private DatabaseReference usuarioLogadoRef;
         private String idUsuarioLogado;
+        private List<Usuario> listaUsuarios = new ArrayList<>();
+
     private FirebaseUser usuarioPerfil;
 
         public EventosAdapter(List<Evento> listaEventos, Context context) {
@@ -118,10 +124,40 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
         holder.nomeLivro.setText(evento.getNomeLivro());
         holder.sobreEvento.setText(evento.getSobreEvento());
 
-        holder.buttonMenu.setOnClickListener(new View.OnClickListener() {
+        if (!evento.getIdUsuario().equals(idUsuarioLogado)) {
+            holder.buttonMenu.setVisibility(View.GONE);
+        } else {
+            holder.buttonMenu.setVisibility(View.VISIBLE);
+
+            holder.buttonMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showPopupMenu(view);
+                }
+            });
+        }
+
+        holder.nomeUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupMenu(view);
+                usuarioRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        Usuario usuarioSelecionado = dataSnapshot.getValue(Usuario.class);
+
+                        if (usuarioSelecionado != null) {
+                            Intent i = new Intent(context, PerfilAmigoActivity.class);
+                            i.putExtra("usuarioSelecionado", usuarioSelecionado);
+                            context.startActivity(i);
+                        } else {
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
             }
         });
     }
