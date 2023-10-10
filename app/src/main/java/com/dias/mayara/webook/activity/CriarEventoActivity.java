@@ -191,7 +191,7 @@ public class CriarEventoActivity extends AppCompatActivity {
                 usuarioLogado = snapshot.getValue( Usuario.class );
 
                 // Recuperar os seguidores do usuário
-                DatabaseReference seguidoresRef = firebaseRef.child("seguidores")
+                DatabaseReference seguidoresRef = firebaseRef.child("seguindo")
                         .child(idUsuarioLogado);
 
                 seguidoresRef.addListenerForSingleValueEvent(new ValueEventListener() {

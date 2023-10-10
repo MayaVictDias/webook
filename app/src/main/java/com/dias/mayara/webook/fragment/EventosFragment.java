@@ -32,9 +32,9 @@ public class EventosFragment extends Fragment {
     private FloatingActionButton floatingActionButtonCriarPublicacao;
     private RecyclerView recyclerView;
     private EventosAdapter eventosAdapter;
-    private List<Evento> listaEventos = new ArrayList<>();
+    private List<Evento> listaFeedEventos = new ArrayList<>();
     private ValueEventListener valueEventListenerEventos;
-    private DatabaseReference eventosRef;
+    private DatabaseReference feedEventosRef;
     private UsuarioFirebase usuarioFirebase;
     private String idUsuarioLogado;
 
@@ -54,11 +54,11 @@ public class EventosFragment extends Fragment {
 
         floatingActionButtonCriarPublicacao = view.findViewById(R.id.floatingActionButtonCriarPublicacao);
         recyclerView = view.findViewById(R.id.recyclerView);
-        eventosRef = ConfiguracaoFirebase.getFirebase().child("eventos").child(idUsuarioLogado);
+        feedEventosRef = ConfiguracaoFirebase.getFirebase().child("feedEventos");
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        eventosAdapter = new EventosAdapter(listaEventos, getActivity());
+        eventosAdapter = new EventosAdapter(listaFeedEventos, getActivity());
         recyclerView.setAdapter(eventosAdapter);
 
         floatingActionButtonCriarPublicacao.setOnClickListener(new View.OnClickListener() {
@@ -76,11 +76,11 @@ public class EventosFragment extends Fragment {
 
     private void listarEventos() {
 
-        valueEventListenerEventos = eventosRef.addValueEventListener(new ValueEventListener() {
+        valueEventListenerEventos = feedEventosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds: snapshot.getChildren() ){
-                    listaEventos.add(ds.getValue(Evento.class));
+                    listaFeedEventos.add(ds.getValue(Evento.class));
                 }
                 eventosAdapter.notifyDataSetChanged();
             }
@@ -101,6 +101,6 @@ public class EventosFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        eventosRef.removeEventListener(valueEventListenerEventos);
+        feedEventosRef.removeEventListener(valueEventListenerEventos);
     }
 }

@@ -19,100 +19,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TextView
-        android:id="@+id/textViewQuantidadeEventosUsuario"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/ubuntu_bold"
-        android:gravity="center_horizontal"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeUsuario" />
-
-    <TextView
-        android:id="@+id/textViewQuantidadeSeguindoUsuario"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/ubuntu_bold"
-        android:gravity="center_horizontal"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeUsuario" />
-
-    <TextView
-        android:id="@+id/textViewQuantidadeSeguidoresUsuario"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/ubuntu_bold"
-        android:gravity="center_horizontal"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeUsuario" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
-        android:text="Seguindo"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeSeguindoUsuario" />
-
-    <TextView
-        android:id="@+id/textViewPostagens"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
-        android:text="Eventos"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeEventosUsuario" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="103dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
-        android:text="Seguidores"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuantidadeSeguidoresUsuario" />
-
     <Button
         android:id="@+id/buttonAcao"
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/estilo_background_perfil"
         android:text="Editar perfil"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeUsuario" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

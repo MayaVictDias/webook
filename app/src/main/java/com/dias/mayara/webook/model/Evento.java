@@ -32,30 +32,27 @@ public class Evento {
 
         Map objeto = new HashMap();
         Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+
         DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
 
         String combinacaoId = "/" + getIdUsuario() + "/" + getId();
         objeto.put("/eventos" + combinacaoId, this);
-
-        for(DataSnapshot seguidores: seguidoresSnapshot.getChildren()) {
-
-            String idSeguidor = seguidores.getKey();
 
             HashMap<String, Object> dadosEvento = new HashMap<>();
             dadosEvento.put("nomeEvento", getNomeEvento());
             dadosEvento.put("nomeLocalEvento", getNomeLocalEvento());
             dadosEvento.put("dataHoraEvento", getDataHoraEvento());
             dadosEvento.put("sobreEvento", getSobreEvento());
+            dadosEvento.put("nomeLivroASerDiscutido", getNomeLivro());
 
+            dadosEvento.put("idPublicacao", getId());
             dadosEvento.put("idUsuario", usuarioLogado.getId());
 
-            String idsAtualizacao = "/" + idSeguidor + "/" + getId();
-            objeto.put("/feed" + idsAtualizacao, dadosEvento);
-        }
+            String idsAtualizacao = "/" + getId();
+            objeto.put("/feedEventos" + idsAtualizacao, dadosEvento);
+
 
         firebaseRef.updateChildren(objeto);
-
-        // postagensRef.setValue(this);
 
         return true;
     }

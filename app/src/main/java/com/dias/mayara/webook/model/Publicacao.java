@@ -49,10 +49,10 @@ public class Publicacao {
             dadosSeguidor.put("id", getId());
 
             dadosSeguidor.put("nomeUsuario", usuarioLogado.getNomeUsuario());
-            dadosSeguidor.put("caminhoFoto", usuarioLogado.getCaminhoFoto());
+            dadosSeguidor.put("caminhoFotoUsuario", usuarioLogado.getCaminhoFoto());
 
             String idsAtualizacao = "/" + idSeguidor + "/" + getId();
-            objeto.put("/feed" + idsAtualizacao, dadosSeguidor);
+            dadosSeguidor.put("/feedEventos" + idsAtualizacao, dadosSeguidor);
         }
 
         firebaseRef.updateChildren(objeto);

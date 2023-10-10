@@ -104,12 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 } else if(item.getItemId() == R.id.ic_pesquisar) {
                     fragmentTransaction.replace(R.id.viewPager, new PesquisarFragment()).commit();
                     return true;
-                } else if(item.getItemId() == R.id.ic_pessoas) {
-                    fragmentTransaction.replace(R.id.viewPager, new PessoasFragment()).commit();
-                    return true;
-                } else if(item.getItemId() == R.id.ic_biblioteca) {
-                    fragmentTransaction.replace(R.id.viewPager, new BibliotecaFragment()).commit();
-                    return true;
                 } else if(item.getItemId() == R.id.ic_perfil) {
                     fragmentTransaction.replace(R.id.viewPager, new PerfilFragment()).commit();
                     return true;

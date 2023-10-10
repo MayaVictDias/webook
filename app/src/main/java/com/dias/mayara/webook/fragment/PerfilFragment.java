@@ -18,15 +18,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.EdicaoPerfilActivity;
-import com.dias.mayara.webook.activity.EventosUsuarioActivity;
-import com.dias.mayara.webook.activity.SeguidoresUsuarioActivity;
-import com.dias.mayara.webook.activity.SeguindoUsuarioActivity;
 import com.dias.mayara.webook.adapter.EventosAdapter;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Evento;
 import com.dias.mayara.webook.model.Usuario;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -110,30 +106,6 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        textViewQuantidadeEventosUsuario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), EventosUsuarioActivity.class);
-                startActivity(i);
-            }
-        });
-
-        textViewQuantidadeSeguidores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), SeguidoresUsuarioActivity.class);
-                startActivity(i);
-            }
-        });
-
-        textViewQuantidadeSeguindo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getActivity(), SeguindoUsuarioActivity.class);
-                startActivity(i);
-            }
-        });
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         eventosAdapter = new EventosAdapter(listaEventos, getActivity());
@@ -147,9 +119,6 @@ public class PerfilFragment extends Fragment {
         // Configuração dos componentes
         imageViewFotoUsuario = view.findViewById(R.id.imageViewFotoUsuario);
         textViewNomeUsuario = view.findViewById(R.id.textViewNomeUsuario);
-        textViewQuantidadeEventosUsuario = view.findViewById(R.id.textViewQuantidadeEventosUsuario);
-        textViewQuantidadeSeguidores = view.findViewById(R.id.textViewQuantidadeSeguidoresUsuario);
-        textViewQuantidadeSeguindo = view.findViewById(R.id.textViewQuantidadeSeguindoUsuario);
         buttonAcaoPerfil = view.findViewById(R.id.buttonAcao);
 
         recyclerView = view.findViewById(R.id.recyclerViewPerfil);
@@ -165,15 +134,6 @@ public class PerfilFragment extends Fragment {
                 Usuario usuario = snapshot.getValue( Usuario.class );
 
                 textViewNomeUsuario.setText(usuario.getNomeUsuario());
-
-                String numeroEventos = String.valueOf( usuario.getNumeroEventos() );
-                String numeroSeguindo = String.valueOf( usuario.getNumeroSeguindo() );
-                String numeroSeguidores = String.valueOf( usuario.getNumeroSeguidores() );
-
-                // Configura valores recuperados
-                textViewQuantidadeEventosUsuario.setText( numeroEventos );
-                textViewQuantidadeSeguidores.setText( numeroSeguidores );
-                textViewQuantidadeSeguindo.setText( numeroSeguindo );
 
             }
 
