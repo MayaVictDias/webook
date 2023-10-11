@@ -2,6 +2,7 @@ package com.dias.mayara.webook.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -46,6 +48,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
         private DatabaseReference usuarioLogadoRef;
         private String idUsuarioLogado;
         private List<Usuario> listaUsuarios = new ArrayList<>();
+        private Drawable drawable;
 
     private FirebaseUser usuarioPerfil;
 
@@ -124,9 +127,34 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
         holder.nomeLivro.setText(evento.getNomeLivro());
         holder.sobreEvento.setText(evento.getSobreEvento());
 
+        // Verifica se evento que está sendo exibido é do usuário logado
         if (!evento.getIdUsuario().equals(idUsuarioLogado)) {
+
+            // Se não for o usuário logado...
             holder.buttonMenu.setVisibility(View.GONE);
-        } else {
+            holder.imageButtonConfirmarPresenca.setVisibility(View.VISIBLE);
+
+            // Se o usuario clicar no botão de confirmar presença...
+            holder.imageButtonConfirmarPresenca.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Drawable.ConstantState currentState = holder.imageButtonConfirmarPresenca.getBackground().getConstantState();
+
+                    if (currentState.equals(ContextCompat.getDrawable(context, R.drawable.add_button).getConstantState())) {
+                        drawable = ContextCompat.getDrawable(context, R.drawable.check_button);
+                        holder.imageButtonConfirmarPresenca.setBackground(drawable);
+
+                        evento.
+
+                    } else {
+                        drawable = ContextCompat.getDrawable(context, R.drawable.add_button);
+                        holder.imageButtonConfirmarPresenca.setBackground(drawable);
+                    }
+                }
+            });
+
+        } else { // Se o evento for do usuário logado...
+            holder.imageButtonConfirmarPresenca.setVisibility(View.GONE);
             holder.buttonMenu.setVisibility(View.VISIBLE);
 
             holder.buttonMenu.setOnClickListener(new View.OnClickListener() {
@@ -204,6 +232,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
         private CircleImageView imageViewFotoUsuario;
         private TextView nomeUsuario;
         private ImageButton buttonMenu;
+        private ImageButton imageButtonConfirmarPresenca;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -216,6 +245,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
             nomeLivro = itemView.findViewById(R.id.textViewNomeLivroAdapterEventos);
             sobreEvento = itemView.findViewById(R.id.textViewSobreEvento);
             buttonMenu = itemView.findViewById(R.id.buttonMenu);
+            imageButtonConfirmarPresenca = itemView.findViewById(R.id.imageButtonConfirmarPresenca);
 
         }
     }

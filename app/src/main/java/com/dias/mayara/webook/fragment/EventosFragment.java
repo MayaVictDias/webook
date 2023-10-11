@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.CriarEventoActivity;
@@ -37,6 +38,7 @@ public class EventosFragment extends Fragment {
     private DatabaseReference feedEventosRef;
     private UsuarioFirebase usuarioFirebase;
     private String idUsuarioLogado;
+    private ImageButton imageButtonConfirmarPresenca;
 
 
     public EventosFragment() {

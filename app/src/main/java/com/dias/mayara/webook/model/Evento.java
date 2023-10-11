@@ -18,6 +18,7 @@ public class Evento {
     private String dataHoraEvento;
     private String nomeLivro;
     private String sobreEvento;
+    private int quantidadeParticipantes;
 
     public Evento() {
 
@@ -124,5 +125,13 @@ public class Evento {
 
     public void setSobreEvento(String sobreEvento) {
         this.sobreEvento = sobreEvento;
+    }
+
+    public int getQuantidadeParticipantes() {
+        return quantidadeParticipantes;
+    }
+
+    public void setQuantidadeParticipantes(int quantidadeParticipantes) {
+        this.quantidadeParticipantes = quantidadeParticipantes;
     }
 }
