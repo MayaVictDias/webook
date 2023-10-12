@@ -39,18 +39,10 @@ public class Evento {
         String combinacaoId = "/" + getIdUsuario() + "/" + getId();
         objeto.put("/eventos" + combinacaoId, this);
 
-            HashMap<String, Object> dadosEvento = new HashMap<>();
-            dadosEvento.put("nomeEvento", getNomeEvento());
-            dadosEvento.put("nomeLocalEvento", getNomeLocalEvento());
-            dadosEvento.put("dataHoraEvento", getDataHoraEvento());
-            dadosEvento.put("sobreEvento", getSobreEvento());
-            dadosEvento.put("nomeLivro", getNomeLivro());
+        HashMap<String, Object> dadosEvento = new HashMap<>();
 
-            dadosEvento.put("idPublicacao", getId());
-            dadosEvento.put("idUsuario", usuarioLogado.getId());
-
-            String idsAtualizacao = "/" + getId();
-            objeto.put("/feedEventos" + idsAtualizacao, dadosEvento);
+        String idsAtualizacao = "/" + getId();
+        objeto.put("/feedEventos" + idsAtualizacao, this);
 
 
         firebaseRef.updateChildren(objeto);

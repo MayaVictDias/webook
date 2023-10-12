@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EventosFragment extends Fragment {
@@ -85,6 +87,7 @@ public class EventosFragment extends Fragment {
                 for (DataSnapshot ds: snapshot.getChildren() ){
                     listaFeedEventos.add(ds.getValue(Evento.class));
                 }
+                Collections.reverse(listaFeedEventos); // Traz os eventos mais recentes como primeiros do feed
                 feedEventosAdapter.notifyDataSetChanged();
             }
 
@@ -96,8 +99,24 @@ public class EventosFragment extends Fragment {
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CriarEventoActivity.REQUEST_CRIAR_EVENTO && resultCode == AppCompatActivity.RESULT_OK) {
+            // Atualizar a lista de eventos
+            listaFeedEventos.clear();
+            listarEventos();
+        }
+    }
+
+
+
+
+
+    @Override
     public void onStart() {
         super.onStart();
+        listaFeedEventos.clear();
         listarEventos();
     }
 

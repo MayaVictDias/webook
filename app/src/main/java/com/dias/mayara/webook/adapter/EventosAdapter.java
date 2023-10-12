@@ -27,6 +27,7 @@ import com.dias.mayara.webook.activity.PerfilAmigoActivity;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Evento;
+import com.dias.mayara.webook.model.PresencasConfirmadas;
 import com.dias.mayara.webook.model.Usuario;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -41,14 +42,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHolder> {
 
-        private List<Evento> listaEventos;
-        private Context context;
-        private DatabaseReference eventoRef;
-        private DatabaseReference feedEventoRef;
-        private DatabaseReference usuarioLogadoRef;
-        private String idUsuarioLogado;
-        private List<Usuario> listaUsuarios = new ArrayList<>();
-        private Drawable drawable;
+    private List<Evento> listaEventos;
+    private Context context;
+    private DatabaseReference eventoRef;
+    private DatabaseReference feedEventoRef;
+    private DatabaseReference usuarioLogadoRef;
+    private DatabaseReference presencasConfirmadas;
+    private String idUsuarioLogado;
+    private List<Usuario> listaUsuarios = new ArrayList<>();
+    private Drawable drawable;
 
     private FirebaseUser usuarioPerfil;
 
@@ -69,6 +71,8 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
     public void onBindViewHolder(@NonNull EventosAdapter.MyViewHolder holder, int position) {
 
         Evento evento = listaEventos.get(position);
+        Usuario usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
+
         DatabaseReference usuarioRef = ConfiguracaoFirebase.getFirebase().child("usuarios")
                 .child(evento.getIdUsuario());
         DatabaseReference usuarioNomeRef = usuarioRef.child("nomeUsuario");
@@ -79,6 +83,9 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                 .child(evento.getId());
 
         feedEventoRef = ConfiguracaoFirebase.getFirebase().child("feedEventos")
+                .child(evento.getId());
+
+        presencasConfirmadas = ConfiguracaoFirebase.getFirebase().child("presencasConfirmadas")
                 .child(evento.getId());
 
         idUsuarioLogado = UsuarioFirebase.getIdentificadorUsuario();
@@ -127,44 +134,98 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
         holder.nomeLivro.setText(evento.getNomeLivro());
         holder.sobreEvento.setText(evento.getSobreEvento());
 
-        // Verifica se evento que está sendo exibido é do usuário logado
-        if (!evento.getIdUsuario().equals(idUsuarioLogado)) {
+        // Recuperar os dados da postagem curtida
+        DatabaseReference presencaRef = ConfiguracaoFirebase.getFirebase().
+                child("presencasConfirmadas")
+                .child(evento.getId());
 
-            // Se não for o usuário logado...
-            holder.buttonMenu.setVisibility(View.GONE);
-            holder.imageButtonConfirmarPresenca.setVisibility(View.VISIBLE);
+        presencaRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-            // Se o usuario clicar no botão de confirmar presença...
-            holder.imageButtonConfirmarPresenca.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Drawable.ConstantState currentState = holder.imageButtonConfirmarPresenca.getBackground().getConstantState();
+                PresencasConfirmadas presencasConfirmadas = snapshot.getValue(PresencasConfirmadas.class);
 
-                    if (currentState.equals(ContextCompat.getDrawable(context, R.drawable.add_button).getConstantState())) {
+                int quantidadePresencasConfirmadas = 0;
+
+                if(snapshot.hasChild("quantidadePresencasConfirmadas")) { // Se o usuario já tiver confirmado presença...
+
+                    PresencasConfirmadas presencasConfirmada = snapshot.getValue(PresencasConfirmadas.class);
+                    quantidadePresencasConfirmadas = presencasConfirmada.getQuantidadePresencasConfirmadas();
+
+                }
+
+                // Montar objeto que retorna sobre as presenças confirmadas
+                PresencasConfirmadas presencas = new PresencasConfirmadas();
+                presencas.setEvento(evento);
+                presencas.setUsuario(usuarioLogado);
+                presencas.setQuantidadePresencasConfirmadas(quantidadePresencasConfirmadas);
+
+                // Verifica se evento que está sendo exibido é do usuário logado
+                if (!evento.getIdUsuario().equals(idUsuarioLogado)) { // Se o evento não for do usuario logado...
+
+                    holder.buttonMenu.setVisibility(View.GONE);
+                    holder.imageButtonConfirmarPresenca.setVisibility(View.VISIBLE);
+
+                    if(snapshot.hasChild(usuarioLogado.getId())) {
+
+                        holder.presencaConfirmada = true;
                         drawable = ContextCompat.getDrawable(context, R.drawable.check_button);
                         holder.imageButtonConfirmarPresenca.setBackground(drawable);
 
-                        evento.
-
                     } else {
+
+                        holder.presencaConfirmada = false;
                         drawable = ContextCompat.getDrawable(context, R.drawable.add_button);
                         holder.imageButtonConfirmarPresenca.setBackground(drawable);
                     }
+
+                    // Se o usuario clicar no botão de confirmar presença...
+                    holder.imageButtonConfirmarPresenca.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (!holder.presencaConfirmada) {
+                                // Presença não confirmada, salvar
+                                presencas.salvar();
+                                holder.presencaConfirmada = true;
+                                drawable = ContextCompat.getDrawable(context, R.drawable.check_button);
+                                holder.imageButtonConfirmarPresenca.setBackground(drawable);
+                                holder.textViewQuantidadeParticipantes.setText(presencas.getQuantidadePresencasConfirmadas() + " participantes");
+                            } else {
+                                // Presença confirmada, remover
+                                presencas.remover();
+                                holder.presencaConfirmada = false;
+                                drawable = ContextCompat.getDrawable(context, R.drawable.add_button);
+                                holder.imageButtonConfirmarPresenca.setBackground(drawable);
+                                holder.textViewQuantidadeParticipantes.setText(presencas.getQuantidadePresencasConfirmadas() + " participantes");
+                            }
+                        }
+                    });
+
+                    holder.textViewQuantidadeParticipantes.setText(presencas.getQuantidadePresencasConfirmadas() + " participantes");
+
+                } else { // Se o evento for do usuário logado...
+
+                    holder.imageButtonConfirmarPresenca.setVisibility(View.GONE);
+                    holder.buttonMenu.setVisibility(View.VISIBLE);
+
+                    holder.textViewQuantidadeParticipantes.setText(presencas.getQuantidadePresencasConfirmadas() + " participantes");
+
+                    holder.buttonMenu.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            showPopupMenu(view);
+                        }
+                    });
                 }
-            });
+            }
 
-        } else { // Se o evento for do usuário logado...
-            holder.imageButtonConfirmarPresenca.setVisibility(View.GONE);
-            holder.buttonMenu.setVisibility(View.VISIBLE);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-            holder.buttonMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    showPopupMenu(view);
-                }
-            });
-        }
+            }
+        });
 
+        // Se o usuario clicar no nome do usuario, vai para a tela de perfil dele
         holder.nomeUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -203,6 +264,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                     // Código para excluir o item
                     eventoRef.removeValue();
                     feedEventoRef.removeValue();
+                    presencasConfirmadas.removeValue();
 
                     Toast.makeText(view.getContext(),
                             "Evento deletado com sucesso! Atualize a tela para visualizar as alterações",
@@ -224,15 +286,13 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView nomeEvento;
-        private TextView nomeLocalEvento;
-        private TextView dataHoraEvento;
-        private TextView nomeLivro;
-        private TextView sobreEvento;
+        private TextView nomeEvento, nomeLocalEvento, dataHoraEvento, nomeLivro,
+                textViewQuantidadeParticipantes, sobreEvento, nomeUsuario;
         private CircleImageView imageViewFotoUsuario;
-        private TextView nomeUsuario;
         private ImageButton buttonMenu;
         private ImageButton imageButtonConfirmarPresenca;
+
+        private boolean presencaConfirmada = false;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -241,6 +301,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
             nomeUsuario = itemView.findViewById(R.id.textViewNomeUsuarioAdapterEventos);
             nomeEvento = itemView.findViewById(R.id.textViewNomeEvento);
             nomeLocalEvento = itemView.findViewById(R.id.textViewLocalEvento);
+            textViewQuantidadeParticipantes = itemView.findViewById(R.id.textViewQuantidadeParticipantes);
             dataHoraEvento = itemView.findViewById(R.id.textViewDataEvento);
             nomeLivro = itemView.findViewById(R.id.textViewNomeLivroAdapterEventos);
             sobreEvento = itemView.findViewById(R.id.textViewSobreEvento);

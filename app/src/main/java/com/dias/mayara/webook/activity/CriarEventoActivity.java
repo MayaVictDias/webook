@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.dias.mayara.webook.R;
+import com.dias.mayara.webook.fragment.EventosFragment;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Evento;
@@ -43,6 +45,8 @@ public class CriarEventoActivity extends AppCompatActivity {
     private DatabaseReference usuariosRef;
     private DatabaseReference usuarioLogadoRef;
     private DataSnapshot seguidoresSnapshot;
+
+    public static final int REQUEST_CRIAR_EVENTO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +109,10 @@ public class CriarEventoActivity extends AppCompatActivity {
         evento.setSobreEvento(editTextSobreOEvento.getText().toString());
 
         if(evento.salvar(seguidoresSnapshot)) {
+
+            Intent resultadoIntent = new Intent();
+            setResult(RESULT_OK, resultadoIntent);
+            finish();
 
             Toast.makeText(CriarEventoActivity.this,
                     "Sucesso ao salvar evento!",
