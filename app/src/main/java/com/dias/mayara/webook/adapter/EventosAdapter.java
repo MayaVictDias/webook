@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.dias.mayara.webook.R;
 import com.dias.mayara.webook.activity.CriarEventoActivity;
+import com.dias.mayara.webook.activity.ListaUsuariosParticipantesActivity;
 import com.dias.mayara.webook.activity.PerfilAmigoActivity;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
@@ -222,6 +223,14 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        holder.textViewQuantidadeParticipantes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(view.getContext(), ListaUsuariosParticipantesActivity.class);
+                view.getContext().startActivity(i);
             }
         });
 

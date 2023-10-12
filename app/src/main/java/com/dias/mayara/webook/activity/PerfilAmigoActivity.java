@@ -93,7 +93,6 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
         eventosAdapter = new EventosAdapter(listaEventos, this);
         recyclerViewPerfil.setAdapter(eventosAdapter);
 
-
         // Recuperar usuário selecionado
         Bundle bundle = getIntent().getExtras();
 
@@ -108,7 +107,6 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
                         .load( url )
                         .into( imageViewFotoUsuario );
             }
-
         }
     }
 
@@ -120,8 +118,6 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         usuarioLogado = snapshot.getValue(Usuario.class);
-
-
 
                     }
 
@@ -140,59 +136,7 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
                 .child( idUsuarioLogado )
                 .child( usuarioSelecionado.getId() );
 
-        /*seguidorRef.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if( dataSnapshot.exists() ){
-                            // Já está seguindo
-                            Log.i("dadosUsuario", ": Seguindo" );
-                            habilitarBotaoSeguirUsuario( true );
-                        }else {
-                            // Ainda não está seguindo
-                            Log.i("dadosUsuario", ": Seguir" );
-                            habilitarBotaoSeguirUsuario( false );
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                }
-        );
-
-         */
-
     }
-
-    /*
-    // Seguir usuário
-    private void habilitarBotaoSeguirUsuario(boolean seSegueUsuario) {
-
-        if ( seSegueUsuario ){
-            buttonAcaoPerfil.setText("Seguindo");
-
-        } else {
-
-            buttonAcaoPerfil.setText("Seguir");
-
-            // Adiciona evento para seguir usuário
-            buttonAcaoPerfil.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    // Salvar seguidor
-                    salvarSeguidor(usuarioLogado, usuarioSelecionado);
-                }
-            });
-
-        }
-
-
-    }
-
-     */
 
     private void abrirDialogCarregamento(String titulo) {
 
@@ -214,6 +158,7 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
 
         recuperarDadosUsuarioLogado();
 
+        listaEventos.clear();
         listarEventos();
     }
 
