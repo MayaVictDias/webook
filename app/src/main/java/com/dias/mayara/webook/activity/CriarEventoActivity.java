@@ -46,8 +46,6 @@ public class CriarEventoActivity extends AppCompatActivity {
     private DatabaseReference usuarioLogadoRef;
     private DataSnapshot seguidoresSnapshot;
 
-    public static final int REQUEST_CRIAR_EVENTO = 1;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,10 +107,6 @@ public class CriarEventoActivity extends AppCompatActivity {
         evento.setSobreEvento(editTextSobreOEvento.getText().toString());
 
         if(evento.salvar(seguidoresSnapshot)) {
-
-            Intent resultadoIntent = new Intent();
-            setResult(RESULT_OK, resultadoIntent);
-            finish();
 
             Toast.makeText(CriarEventoActivity.this,
                     "Sucesso ao salvar evento!",
