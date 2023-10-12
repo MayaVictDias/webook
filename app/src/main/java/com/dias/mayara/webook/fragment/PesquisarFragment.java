@@ -37,9 +37,6 @@ public class PesquisarFragment extends Fragment {
     private RecyclerView recyclerViewPesquisa;
     private List<Usuario> listaUsuarios;
     private DatabaseReference usuariosRef;
-    // TODO criar livrosRef
-    // TODO criar eventosRef
-    // Todo criar autoresRef
     private PesquisaAdapter pesquisaAdapter;
     private String idUsuarioLogado;
 

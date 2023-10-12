@@ -5,11 +5,12 @@ import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Evento {
+public class Evento implements Serializable {
 
     private String id;
     private String idUsuario;

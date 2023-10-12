@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class        PerfilAmigoActivity extends AppCompatActivity {
+public class PerfilAmigoActivity extends AppCompatActivity {
 
     private Usuario usuarioSelecionado;
     private Usuario usuarioLogado;
@@ -101,7 +101,7 @@ public class        PerfilAmigoActivity extends AppCompatActivity {
 
             // Recuperar foto do usuário
             String caminhoFoto = usuarioSelecionado.getCaminhoFoto();
-            if( caminhoFoto != null ){
+            if( caminhoFoto != null && !caminhoFoto.isEmpty() ){
                 Uri url = Uri.parse( caminhoFoto );
                 Glide.with(PerfilAmigoActivity.this)
                         .load( url )
