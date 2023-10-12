@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.dias.mayara.webook.R;
-import com.dias.mayara.webook.fragment.EventosFragment;
 import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Evento;
@@ -39,7 +37,7 @@ public class CriarEventoActivity extends AppCompatActivity {
     private AlertDialog dialog;
     private String idUsuarioLogado;
     private EditText editTextNomeEvento, editTextLocalEvento, editTextNomeLivroASerDiscutido,
-            dataHoraEvento, editTextSobreOEvento;
+            editTextDataHoraEvento, editTextSobreOEvento;
     private Usuario usuarioLogado;
     private DatabaseReference firebaseRef;
     private DatabaseReference usuariosRef;
@@ -71,7 +69,7 @@ public class CriarEventoActivity extends AppCompatActivity {
         // Inicialização dos componentes
         buttonSelecionarDataHora = findViewById(R.id.btnSelecionarDataHora);
         calendar = Calendar.getInstance();
-        dataHoraEvento = findViewById(R.id.dataHoraEvento);
+        editTextDataHoraEvento = findViewById(R.id.dataHoraEvento);
         buttonCriarEvento = findViewById(R.id.buttonCriarEvento);
         editTextNomeEvento = findViewById(R.id.editTextNomeEvento);
         editTextLocalEvento = findViewById(R.id.editTextLocalEvento);
@@ -88,9 +86,27 @@ public class CriarEventoActivity extends AppCompatActivity {
         buttonCriarEvento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                criarEvento();
+                conferirTodosCamposPreenchidos();
             }
         });
+    }
+
+    // Metodo que confere se todos os campos estão preenchidos
+    private void conferirTodosCamposPreenchidos() {
+
+        if(editTextNomeEvento.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Preencha o campo 'Nome do Evento'", Toast.LENGTH_SHORT).show();
+        } else if(editTextLocalEvento.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Preencha o campo 'Local do Evento'", Toast.LENGTH_SHORT).show();
+        } else if(editTextDataHoraEvento.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Selecione uma Data e Hora do Evento", Toast.LENGTH_SHORT).show();
+        } else if(editTextNomeLivroASerDiscutido.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Preencha o campo 'Livro a ser discutido'", Toast.LENGTH_SHORT).show();
+        } else if(editTextSobreOEvento.getText().toString().isEmpty()) {
+            Toast.makeText(this, "Preencha o campo 'Sobre o evento'", Toast.LENGTH_SHORT).show();
+        } else {
+            criarEvento(); // Se todos os campos estiverem preenchidos, cria o evento
+        }
     }
 
     private void criarEvento() {
@@ -102,7 +118,7 @@ public class CriarEventoActivity extends AppCompatActivity {
         evento.setIdUsuario(idUsuarioLogado);
         evento.setNomeEvento(editTextNomeEvento.getText().toString());
         evento.setNomeLocalEvento(editTextLocalEvento.getText().toString());
-        evento.setDataHoraEvento(dataHoraEvento.getText().toString());
+        evento.setDataHoraEvento(editTextDataHoraEvento.getText().toString());
         evento.setNomeLivro(editTextNomeLivroASerDiscutido.getText().toString());
         evento.setSobreEvento(editTextSobreOEvento.getText().toString());
 
@@ -154,8 +170,8 @@ public class CriarEventoActivity extends AppCompatActivity {
                         calendar.set(Calendar.MINUTE, minute);
 
                         dataHoraFormatada = new SimpleDateFormat("dd/MM/yyyy HH:mm").format(calendar.getTime());
-                        dataHoraEvento.setText(dataHoraFormatada);
-                        dataHoraEvento.setVisibility(View.VISIBLE);
+                        editTextDataHoraEvento.setText(dataHoraFormatada);
+                        editTextDataHoraEvento.setVisibility(View.VISIBLE);
                         buttonSelecionarDataHora.setText("Alterar data e hora");
                     }
                 }, hora, minuto, true);

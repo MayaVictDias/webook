@@ -99,21 +99,6 @@ public class EventosFragment extends Fragment {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == CriarEventoActivity.REQUEST_CRIAR_EVENTO && resultCode == AppCompatActivity.RESULT_OK) {
-            // Atualizar a lista de eventos
-            listaFeedEventos.clear();
-            listarEventos();
-        }
-    }
-
-
-
-
-
-    @Override
     public void onStart() {
         super.onStart();
         listaFeedEventos.clear();
