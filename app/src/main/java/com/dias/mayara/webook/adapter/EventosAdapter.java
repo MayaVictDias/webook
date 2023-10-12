@@ -99,7 +99,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String urlFoto = dataSnapshot.getValue(String.class);
-                if (urlFoto != null) {
+                if (urlFoto != null && !urlFoto.isEmpty()) {
                     Uri uriFotoUsuario = Uri.parse(urlFoto);
                     Glide.with(context).load(uriFotoUsuario).into(holder.imageViewFotoUsuario);
                 } else {
@@ -230,6 +230,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(view.getContext(), ListaUsuariosParticipantesActivity.class);
+                i.putExtra("evento", evento);
                 view.getContext().startActivity(i);
             }
         });
