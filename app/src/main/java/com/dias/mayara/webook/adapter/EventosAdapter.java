@@ -217,6 +217,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                         @Override
                         public void onClick(View view) {
                             showPopupMenu(view, position);
+
                         }
                     });
                 }
