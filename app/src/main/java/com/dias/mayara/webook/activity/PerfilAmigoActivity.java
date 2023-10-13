@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -129,15 +130,6 @@ public class PerfilAmigoActivity extends AppCompatActivity {
         );
     }
 
-    // Metodo responsavel por verificar se um usuário já segue outro qualquer
-    private void verificaSeSegueUsuarioAmigo() {
-
-        DatabaseReference seguidorRef = seguindoRef
-                .child( idUsuarioLogado )
-                .child( usuarioSelecionado.getId() );
-
-    }
-
     private void abrirDialogCarregamento(String titulo) {
 
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -207,6 +199,7 @@ public class PerfilAmigoActivity extends AppCompatActivity {
                 for (DataSnapshot ds: snapshot.getChildren() ){
                     listaEventos.add(ds.getValue(Evento.class));
                 }
+                Collections.reverse(listaEventos);
                 eventosAdapter.notifyDataSetChanged();
             }
 

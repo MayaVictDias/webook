@@ -104,9 +104,6 @@ public class ListaUsuariosParticipantesActivity extends AppCompatActivity {
             }
         });
 
-
-
-
         // Configuração do evento de clique
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(
                 this,

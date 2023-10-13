@@ -191,6 +191,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                                 drawable = ContextCompat.getDrawable(context, R.drawable.check_button);
                                 holder.imageButtonConfirmarPresenca.setBackground(drawable);
                                 holder.textViewQuantidadeParticipantes.setText(presencas.getQuantidadePresencasConfirmadas() + " participantes");
+                                Toast.makeText(context, "Presença confirmada!", Toast.LENGTH_SHORT).show();
                             } else {
                                 // Presença confirmada, remover
                                 presencas.remover();
@@ -198,6 +199,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                                 drawable = ContextCompat.getDrawable(context, R.drawable.add_button);
                                 holder.imageButtonConfirmarPresenca.setBackground(drawable);
                                 holder.textViewQuantidadeParticipantes.setText(presencas.getQuantidadePresencasConfirmadas() + " participantes");
+                                Toast.makeText(context, "Presença removida!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -214,7 +216,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                     holder.buttonMenu.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            showPopupMenu(view);
+                            showPopupMenu(view, position);
                         }
                     });
                 }
@@ -261,7 +263,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
         });
     }
 
-    private void showPopupMenu(View view) {
+    private void showPopupMenu(View view, int position) {
 
         PopupMenu popupMenu = new PopupMenu(view.getContext(), view);
         MenuInflater inflater = popupMenu.getMenuInflater();
@@ -275,6 +277,13 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                     eventoRef.removeValue();
                     feedEventoRef.removeValue();
                     presencasConfirmadas.removeValue();
+
+                    // Agora, remova o item da lista de eventos
+                    listaEventos.remove(position);
+
+                    // Atualize o RecyclerView
+                    notifyItemRemoved(position);
+                    notifyItemRangeChanged(position, listaEventos.size());
 
                     Toast.makeText(view.getContext(),
                             "Evento deletado com sucesso! Atualize a tela para visualizar as alterações",

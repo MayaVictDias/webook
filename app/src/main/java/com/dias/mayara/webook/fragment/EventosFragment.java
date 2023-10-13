@@ -101,6 +101,7 @@ public class EventosFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
         listaFeedEventos.clear();
         listarEventos();
     }
@@ -108,6 +109,7 @@ public class EventosFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
+
         feedEventosRef.removeEventListener(valueEventListenerEventos);
     }
 }
