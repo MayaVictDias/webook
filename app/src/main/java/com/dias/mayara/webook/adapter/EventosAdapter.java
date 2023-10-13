@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -54,6 +55,7 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
     private Drawable drawable;
 
     private FirebaseUser usuarioPerfil;
+    private AlertDialog dialog;
 
         public EventosAdapter(List<Evento> listaEventos, Context context) {
             this.listaEventos = listaEventos;
@@ -275,6 +277,8 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.action_delete) {
 
+                    abrirDialogCarregamento("Deletando evento");
+
                     eventoRef = ConfiguracaoFirebase.getFirebase().child("eventos")
                             .child(listaEventos.get(position).getIdUsuario())
                                     .child(listaEventos.get(position).getId());
@@ -290,12 +294,14 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                     feedEventoRef.removeValue();
                     presencasConfirmadas.removeValue();
 
-                    // Agora, remova o item da lista de eventos
+                    // Remove o item da lista de eventos
                     listaEventos.remove(position);
 
                     // Atualize o RecyclerView
                     notifyItemRemoved(position);
                     notifyItemRangeChanged(position, listaEventos.size());
+
+                    dialog.cancel();
 
                     Toast.makeText(view.getContext(),
                             "Evento deletado com sucesso! Atualize a tela para visualizar as alterações",
@@ -307,6 +313,17 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
             }
         });
         popupMenu.show();
+    }
+
+    private void abrirDialogCarregamento(String titulo) {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setTitle(titulo);
+        alert.setCancelable(false); // Impede que o usuário cancele a tela de carregamento
+        alert.setView(R.layout.dialog_carregamento);
+
+        dialog = alert.create();
+        dialog.show();
     }
 
 
