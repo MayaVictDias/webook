@@ -81,6 +81,8 @@ public class EventosFragment extends Fragment {
 
     private void listarEventos() {
 
+        listaFeedEventos.clear();
+
         valueEventListenerEventos = feedEventosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -102,7 +104,6 @@ public class EventosFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
-        listaFeedEventos.clear();
         listarEventos();
     }
 

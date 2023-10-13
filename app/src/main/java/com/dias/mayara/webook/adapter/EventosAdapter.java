@@ -294,17 +294,12 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
                     feedEventoRef.removeValue();
                     presencasConfirmadas.removeValue();
 
-                    // Remove o item da lista de eventos
-                    listaEventos.remove(position);
-
-                    // Atualize o RecyclerView
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(position, listaEventos.size());
+                    listaEventos.clear();
 
                     dialog.cancel();
 
                     Toast.makeText(view.getContext(),
-                            "Evento deletado com sucesso! Atualize a tela para visualizar as alterações",
+                            "Evento deletado com sucesso!",
                             Toast.LENGTH_SHORT).show();
                     return true;
                 } else {

@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -153,6 +154,7 @@ public class PerfilFragment extends Fragment {
                 for (DataSnapshot ds: snapshot.getChildren() ){
                     listaEventos.add(ds.getValue(Evento.class));
                 }
+                Collections.reverse(listaEventos);
                 eventosAdapter.notifyDataSetChanged();
             }
 
