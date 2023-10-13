@@ -274,6 +274,17 @@ public class EventosAdapter extends RecyclerView.Adapter<EventosAdapter.MyViewHo
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.action_delete) {
+
+                    eventoRef = ConfiguracaoFirebase.getFirebase().child("eventos")
+                            .child(listaEventos.get(position).getIdUsuario())
+                                    .child(listaEventos.get(position).getId());
+
+                    feedEventoRef = ConfiguracaoFirebase.getFirebase().child("feedEventos")
+                            .child(listaEventos.get(position).getId());
+
+                    presencasConfirmadas = ConfiguracaoFirebase.getFirebase().child("presencasConfirmadas")
+                            .child(listaEventos.get(position).getId());
+
                     // Código para excluir o item
                     eventoRef.removeValue();
                     feedEventoRef.removeValue();
