@@ -47,4 +47,4 @@ Distribuído sob a licença MIT
 Caso queira reportar algum bug ou sugerir uma nova funcionalidade ao app, acesse [aqui](https://github.com/MayaVictDias/webook/issues) 
 
 ## 5. Download do app
-Para fazer download do app, é necessário ter um dispositivo Android. Acesse [aqui](https://github.com/MayaVictDias/webook/releases/tag/v1.0) e clique em app-release.apk que o download irá iniciar
+Para fazer download do app, é necessário ter um dispositivo Android. Acesse [aqui](https://github.com/MayaVictDias/webook/releases/tag/v1.1) e clique em app-release.apk que o download irá iniciar
