@@ -40,11 +40,11 @@ Seguem demonstrações de algumas das principais funcionalidades oferecidas pelo
 ### 2.4 Excluir e confirmar presença em evento
 <img src=".github/img/gif-navegacao-funcionalidade-excluir-participar-evento.gif" alt="GIF mostrando a navegação da tela de excluir/participar de evento" height="500">
 
-### 3. Licença
+## 3. Licença
 Distribuído sob a licença MIT.
 
-### 4. Reportar bugs ou sugerir funcionalidades
+## 4. Reportar bugs ou sugerir funcionalidades
 Caso queira reportar algum bug ou sugerir uma nova funcionalidade ao app, acesse [aqui](https://github.com/MayaVictDias/webook/issues) 
 
-### 5. Download do app
+## 5. Download do app
 Para fazer download do app, é necessário ter um dispositivo Android. Acesse [aqui](https://github.com/MayaVictDias/webook/releases/tag/v1.0) e clique em app-release.apk que o download irá iniciar
