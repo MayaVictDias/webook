@@ -11,8 +11,8 @@
 
 * [Objetivo](#1-objetivo)
 * [Interfaces](#2-interfaces)
-    * [Tela de login](#22-tela-de-cadastro)
-    * [Tela de cadastro](#23-tela-de-cadastro)
+    * [Tela de login](#21-tela-de-login)
+    * [Tela de cadastro](#22-tela-de-cadastro)
     * [Tela de criação de eventos](#23-tela-de-cria%C3%A7%C3%A3o-de-eventos)
     * [Excluir e confirmar presença em evento](#24-excluir-e-confirmar-presença-em-evento)
     * [Pesquisa e interação com outros usuários](#25-pesquisa-e-interação-com-outros-usuários)
