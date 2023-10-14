@@ -1,6 +1,7 @@
 <div style="text-align: center;">
-
+<p align="center">
 <img src=".github/img/logo-webook.png" alt="Logotipo do app" height="100">
+</p>
 <h4>WEBOOK</h4>
 Meu primeiro app mobile desenvolvido durante o projeto de Atividade Extensionista da minha graduação em Engenharia de Software
 
@@ -22,23 +23,23 @@ Meu primeiro app mobile desenvolvido durante o projeto de Atividade Extensionist
 ## 1. Objetivo
 O aplicativo foi desenvolvido com o propósito de servir como um local para os usuários cadastrarem eventos de clubes de leitura e receberem confirmações das pessoas que tem interesse em participar deles
 
-##2. Interfaces
+## 2. Interfaces
 Seguem demonstrações de algumas das principais funcionalidades oferecidas pelo app:
 
 
-###2.1 Tela de login
+### 2.1 Tela de login
 <img src=".github/img/gif-navegacao-tela-login.gif" alt="GIF mostrando a navegação da tela de login" height="500">
 
-###2.2 Tela de cadastro
+### 2.2 Tela de cadastro
 <img src=".github/img/gif-navegacao-tela-cadastro.gif" alt="GIF mostrando a navegação da tela de cadastro" height="500">
 
-###2.3 Tela de criação de eventos
+### 2.3 Tela de criação de eventos
 <img src=".github/img/gif-navegacao-tela-criacao-eventos.gif" alt="GIF mostrando a navegação da tela de criação de eventos" height="500">
 
-###2.4 Excluir e confirmar presença em evento
+### 2.4 Excluir e confirmar presença em evento
 <img src=".github/img/gif-navegacao-funcionalidade-excluir-participar-evento.gif" alt="GIF mostrando a navegação da tela de excluir/participar de evento" height="500">
 
-###3. Licença
+### 3. Licença
 Distribuído sob a licença MIT.
 
 ### 4. Reportar bugs ou sugerir funcionalidades
