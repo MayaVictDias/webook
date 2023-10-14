@@ -41,7 +41,7 @@ Seguem demonstrações de algumas das principais funcionalidades oferecidas pelo
 <img src=".github/img/gif-navegacao-funcionalidade-excluir-participar-evento.gif" alt="GIF mostrando a navegação da tela de excluir/participar de evento" height="500">
 
 ## 3. Licença
-Distribuído sob a licença MIT.
+Distribuído sob a licença MIT
 
 ## 4. Reportar bugs ou sugerir funcionalidades
 Caso queira reportar algum bug ou sugerir uma nova funcionalidade ao app, acesse [aqui](https://github.com/MayaVictDias/webook/issues) 
