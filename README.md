@@ -18,7 +18,7 @@
     * [Pesquisa e interação com outros usuários](#25-pesquisa-e-interação-com-outros-usuários)
     * [Editar perfil](#26-editar-perfil)
 * [Licença](#3-licen%C3%A7a)
-* [Tecnologias usadas](4-tecnologias-usadas)
+* [Tecnologias usadas](#4-tecnologias-usadas)
 * [Reportar bugs ou sugerir funcionalidades](#5-reportar-bugs-ou-sugerir-funcionalidades)
 * [Download do app](#6-download-do-app)
 
