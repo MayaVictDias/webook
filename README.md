@@ -15,7 +15,7 @@
     * [Tela de cadastro](#23-tela-de-cria%C3%A7%C3%A3o-de-eventos)
     * [Tela de criação de eventos](#24-excluir-e-confirmar-presen%C3%A7a-em-evento)
     * [Excluir e confirmar presença em evento](#25-excluir-e-confirmar-presença-em-evento)
-    * [Pesquisa e interação com outros usuários](#25-pesquisa-e-interacao-com-outros-usuarios)
+    * [Pesquisa e interação com outros usuários](#25-pesquisa-e-interação-com-outros-usuários)
     * [Editar perfil](#26-editar-perfil)
 * [Licença](#3-licen%C3%A7a)
 * [Tecnologias usadas](4-tecnologias-usadas)
