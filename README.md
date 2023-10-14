@@ -2,12 +2,12 @@
 <p align="center">
 <img src=".github/img/logo-webook.png" alt="Logotipo do app" height="100">
 </p>
-<h4>WEBOOK</h4>
-Meu primeiro app mobile desenvolvido durante o projeto de Atividade Extensionista da minha graduação em Engenharia de Software
+<h4 align="center">WEBOOK</h4>
+<p align="center">Meu primeiro app mobile desenvolvido durante o projeto de Atividade Extensionista da minha graduação em Engenharia de Software</p>
 
 </div>
 
-##Sumário
+## Sumário
 
 * [Objetivo](#objetivo)
 * [Interfaces](#interfaces)
