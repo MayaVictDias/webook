@@ -1,8 +1,8 @@
 <div style="text-align: center;">
 <p align="center">
-<img src=".github/img/logo-webook.png" alt="Logotipo do app" height="200">
+<img src=".github/img/logo-webook.png" alt="Logotipo do app" height="100">
 </p>
-<h1 align="center">WEBOOK</h4>
+<h3 align="center">WEBOOK</h3>
 <p align="center">Meu primeiro app mobile desenvolvido durante o projeto de Atividade Extensionista da minha graduação em Engenharia de Software</p>
 
 </div>
