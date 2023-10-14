@@ -17,6 +17,7 @@
     * [Excluir e confirmar presença em evento](#excluir-e-confirmar-presença-em-evento)
 * [Licença](#3-licen%C3%A7a)
 * [Reportar bugs ou sugerir funcionalidades](#4-reportar-bugs-ou-sugerir-funcionalidades)
+* [Download do app](#5-download-do-app)
 
 
 
@@ -44,3 +45,6 @@ Distribuído sob a licença MIT.
 
 ### 4. Reportar bugs ou sugerir funcionalidades
 Caso queira reportar algum bug ou sugerir uma nova funcionalidade ao app, acesse [aqui](https://github.com/MayaVictDias/webook/issues) 
+
+### 5. Download do app
+Para fazer download do app, é necessário ter um dispositivo Android. Acesse [aqui](https://github.com/MayaVictDias/webook/releases/tag/v1.0) e clique em app-release.apk que o download irá iniciar
