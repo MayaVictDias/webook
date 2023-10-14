@@ -20,80 +20,103 @@
         app:layout_constraintTop_toBottomOf="@+id/include2"
         app:srcCompat="@drawable/icone_account_circle" />
 
-    <EditText
-        android:id="@+id/editTextCadastroNome"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/estilo_background_button"
-        android:ems="10"
-        android:hint="Nome"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColor="@color/black"
         android:textColorHint="@color/colorAccent"
-        app:layout_constraintBottom_toTopOf="@+id/editTextCadastroEmail"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
-    <EditText
-        android:id="@+id/editTextCadastroEmail"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCadastroNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Nome"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorAccent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/estilo_background_button"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColor="@color/black"
         android:textColorHint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCadastroNome" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout1">
 
-    <EditText
-        android:id="@+id/editTextCadastroSenha"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCadastroEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorAccent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/estilo_background_button"
-        android:ems="10"
-        android:hint="Senha"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        android:textColor="@color/black"
         android:textColorHint="@color/colorAccent"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCadastroEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
-    <EditText
-        android:id="@+id/editTextCadastroConfirmarSenha"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCadastroSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorAccent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:textColorHint="@color/colorAccent"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/estilo_background_button"
-        android:ems="10"
-        android:fontFamily="@font/ubuntu"
-        android:hint="Confirme sua senha"
-        android:inputType="textPassword"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCadastroSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextCadastroConfirmarSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Confirme sua senha"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/colorAccent" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonCadastroCadastrar"
@@ -107,7 +130,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCadastroConfirmarSenha" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
 
     <ProgressBar
         android:id="@+id/progressBarCadastrarNovoUsuario"
@@ -119,4 +142,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonCadastroCadastrar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

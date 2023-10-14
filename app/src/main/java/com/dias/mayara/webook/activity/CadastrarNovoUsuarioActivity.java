@@ -18,6 +18,7 @@ import com.dias.mayara.webook.helper.UsuarioFirebase;
 import com.dias.mayara.webook.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -26,7 +27,8 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class CadastrarNovoUsuarioActivity extends AppCompatActivity {
 
-    private EditText editTextCadastroNome, editTextCadastroEmail, editTextCadastroSenha, editTextCadastroConfirmarSenha;
+    private TextInputEditText editTextCadastroNome, editTextCadastroEmail,
+            editTextCadastroSenha, editTextCadastroConfirmarSenha;
     private Button buttonCadastroCadastrar;
     private ProgressBar progressBarCadastrarNovoUsuario;
     private Usuario usuario;

@@ -19,13 +19,13 @@ import com.dias.mayara.webook.helper.ConfiguracaoFirebase;
 import com.dias.mayara.webook.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText editTextLoginEmail;
-    private EditText editTextLoginSenha;
+    private TextInputEditText editTextLoginEmail, editTextLoginSenha;
     private Button buttonLogin;
     private ProgressBar progressBar2;
     private Usuario usuario;
