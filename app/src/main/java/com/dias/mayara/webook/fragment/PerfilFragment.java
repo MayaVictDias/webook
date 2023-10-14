@@ -148,6 +148,8 @@ public class PerfilFragment extends Fragment {
 
     private void listarEventos() {
 
+        listaEventos.clear();
+
         valueEventListenerEventos = eventosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -171,7 +173,6 @@ public class PerfilFragment extends Fragment {
 
         // Recuperar dados do usuario logado
         recuperarDadosUsuarioLogado();
-
         listarEventos();
 
     }
