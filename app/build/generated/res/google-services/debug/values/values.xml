@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">129604972394-aliqg1i51b1cvtjd5p996j07p5fn01un.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">129604972394</string>
+    <string name="google_api_key" translatable="false">AIzaSyCbwxhbktXv4kjSS5yH0dDqQVGa0KwOqX4</string>
+    <string name="google_app_id" translatable="false">1:129604972394:android:488d7a3937fdaab77cbf13</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCbwxhbktXv4kjSS5yH0dDqQVGa0KwOqX4</string>
+    <string name="google_storage_bucket" translatable="false">webook-4259e.appspot.com</string>
+    <string name="project_id" translatable="false">webook-4259e</string>
+</resources>

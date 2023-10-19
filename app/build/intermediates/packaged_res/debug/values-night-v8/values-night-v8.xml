@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.Theme.Webook" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorPrimaryDark">@color/darkPrimaryColor</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/ubuntu</item>
+        <item name="background">@color/white</item>
+
+        
+        <item name="android:actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+    </style>
+    <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        
+        <item name="android:tint">@color/white</item>
+    </style>
+    <style name="Theme.Webook" parent="Base.Theme.Webook"/>
+</resources>

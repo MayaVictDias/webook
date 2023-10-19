@@ -1,0 +1,270 @@
+[
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_perfil_amigo.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_perfil_amigo.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\menu_manu_bottom_nav.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\menu\\manu_bottom_nav.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_tela_inicial.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_tela_inicial.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_eventos_usuario.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_eventos_usuario.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_estilo_background_perfil.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\estilo_background_perfil.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_icone_account_circle.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\icone_account_circle.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_icone_gostei.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\icone_gostei.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_lista_usuarios_participantes.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_lista_usuarios_participantes.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_icone_comentario.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\icone_comentario.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\xml_activity_main_scene.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\xml\\activity_main_scene.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_account_circle_branco.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_account_circle_branco.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_check_button.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\check_button.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\font_ubuntu_bold.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\font\\ubuntu_bold.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_fragment_perfil.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\fragment_perfil.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_dialog_carregamento.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\dialog_carregamento.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_voltar_branco.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_voltar_branco.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_home_branco.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_home_branco.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_bottom_navigation.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\bottom_navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_adapter_pesquisa_usuario.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\adapter_pesquisa_usuario.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_estilo_background_button.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\estilo_background_button.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_criar_evento.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_criar_evento.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_more_vert.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\more_vert.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_fragment_eventos.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\fragment_eventos.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-hdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_adapter_eventos.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\adapter_eventos.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_fragment_pesquisar.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\fragment_pesquisar.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_book_branco.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_book_branco.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\font_ubuntu_light.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\font\\ubuntu_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_cadastrar_novo_usuario.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_cadastrar_novo_usuario.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_group_branco.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_group_branco.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_button_editar.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\button_editar.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_imagem_android_empty.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\imagem_android_empty.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_add_button.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\add_button.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_activity_edicao_perfil.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\activity_edicao_perfil.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_person_primary_color.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_person_primary_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_image_preto_24.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_image_preto_24.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_logotipo_webook.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\logotipo_webook.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\menu_menu_main.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\menu\\menu_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\layout_toolbar.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\layout\\toolbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\font_ubuntu.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\font\\ubuntu.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_search_branco.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_search_branco.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\menu_menu_eventos.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\menu\\menu_eventos.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_image_branco_24.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_image_branco_24.png"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\drawable_ic_add_branco_24.png.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\drawable\\ic_add_branco_24.png"
+    },
+    {
+        "merged": "com.dias.mayara.webook.app-merged_res-36:/layout_activity_cadastrar_novo_usuario.xml.flat",
+        "source": "com.dias.mayara.webook.app-main-38:/layout/activity_cadastrar_novo_usuario.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-merged_res-36:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\victd\\.gradle\\daemon\\8.0\\com.dias.mayara.webook.app-main-38:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    }
+]
